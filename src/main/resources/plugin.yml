@@ -1,0 +1,20 @@
+name: MChannels
+main: com.miraclem4n.madvanced.MAdvanced
+version: ${m.version}-${build.number}-${p.version}
+author: MiracleM4n
+authors: [MiracleM4n]
+website: http://mdev.in/
+softdepend: [mChatSuite, MChat]
+description: MChat's Channel Implementation
+commands:
+    madvanced:
+        aliases: [madv, ma]
+permissions:
+    madvanced.*:
+        default: op
+        description: Allows full use of MAdvanced.
+        children:
+            madvanced.reload: true
+    madvanced.reload:
+        default: false
+        description: Allow usage of /madvanced reload command.
