@@ -5,7 +5,7 @@ author: MiracleM4n
 authors: [MiracleM4n]
 website: http://mdev.in/
 softdepend: [mChatSuite, MChat]
-description: MChat's Channel Implementation
+description: Advanced MChat functionality
 commands:
     madvanced:
         aliases: [madv, ma]
