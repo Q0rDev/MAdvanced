@@ -1,20 +1,75 @@
-name: MChannels
+name: MAdvanced
 main: com.miraclem4n.madvanced.MAdvanced
 version: ${m.version}-${build.number}-${p.version}
 author: MiracleM4n
 authors: [MiracleM4n]
 website: http://mdev.in/
-softdepend: [mChatSuite, MChat]
+softdepend: [mChatSuite, MChat, Spout, SpoutPlugin]
 description: Advanced MChat functionality
 commands:
     madvanced:
         aliases: [madv, ma]
+        ~permissions: madvanced.reload
+    mchatafk:
+        usage: |
+            /<command> [REASON] - Displays you as AFK(REASON is optional).
+        aliases: [mafk, maway]
+        ~permissions: mchat.afk.self
+    mchatafkother:
+        usage: |
+            /<command> *PLAYER* [REASON] - Displays *PLAYER* as AFK (REASON is optional).
+        aliases: [mafkother, mafko, mawayother, mawayo]
+        ~permissions: mchat.afk.other
+    mchatlist:
+        usage: |
+            /<command> - See A list of online players.
+        aliases: [mlist, monline, mplayerlist]
+        ~permissions: mchat.list
+    mchatwho:
+        usage: |
+            /<command> *PLAYER* - Displays info about player.
+        aliases: [mwho]
+        ~permissions: mchat.who
 permissions:
     madvanced.*:
         default: op
         description: Allows full use of MAdvanced.
         children:
             madvanced.reload: true
+            mchat.afk.*: true
+            mchat.list: true
+            mchat.who: true
+            mchat.bypass.afk.*: true
     madvanced.reload:
         default: false
         description: Allow usage of /madvanced reload command.
+    mchat.afk.*:
+        default: false
+        description: Allow usage of all PM functions
+        children:
+            mchat.afk.self: true
+            mchat.afk.other: true
+    mchat.bypass.afk.*:
+        default: false
+        description: Allow usage of all PM functions
+        children:
+            mchat.bypass.afk: true
+            mchat.bypass.afkkick: true
+    mchat.bypass.afk:
+        default: false
+        description: Allow bypassing of AutoAFK.
+    mchat.bypass.afkkick:
+        default: false
+        description: Allow bypassing of AutoAFK Kick.
+    mchat.afk:
+        default: false
+        description: Allow use of the /mchatafk command.
+    mchat.afkother:
+        default: false
+        description: Allow use of the /mchatafkother command.
+    mchat.list:
+        default: false
+        description: Allow use of the /mchatlist command.
+    mchat.who:
+        default: false
+        description: Allow use of the /mchatwho command.
