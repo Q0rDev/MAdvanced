@@ -13,12 +13,12 @@ public class ConfigUtil {
     static File file;
     static Boolean changed;
 
-    static ArrayList<String> whoAliases = new ArrayList<String>();
-    static ArrayList<String> listAliases = new ArrayList<String>();
-    static ArrayList<String> afkAliases = new ArrayList<String>();
-    static ArrayList<String> afkOtherAliases = new ArrayList<String>();
+    static ArrayList<String> whoAliases;
+    static ArrayList<String> listAliases;
+    static ArrayList<String> afkAliases;
+    static ArrayList<String> afkOtherAliases;
 
-    static HashMap<String, List<String>> aliasMap = new HashMap<String, List<String>>();
+    static HashMap<String, List<String>> aliasMap;
 
     public static void initialize() {
         load();
@@ -28,6 +28,12 @@ public class ConfigUtil {
         config = null;
         file = null;
         changed = null;
+
+        whoAliases = null;
+        listAliases = null;
+        afkAliases = null;
+        afkOtherAliases = null;
+        
         aliasMap = null;
     }
 
@@ -40,6 +46,13 @@ public class ConfigUtil {
         config.options().header("MAdvanced Config");
 
         changed = false;
+
+        whoAliases = new ArrayList<String>();
+        listAliases = new ArrayList<String>();
+        afkAliases = new ArrayList<String>();
+        afkOtherAliases = new ArrayList<String>();
+
+        aliasMap = new HashMap<String, List<String>>();
 
         loadDefaults();
     }
