@@ -147,7 +147,7 @@ public class MAdvanced extends JavaPlugin {
     }
 
     void setupTasks() {
-        getServer().getScheduler().scheduleAsyncRepeatingTask(this, new Runnable() {
+        getServer().getScheduler().scheduleSyncRepeatingTask(this, new Runnable() {
             public void run() {
                 if (ConfigType.OPTION_AFK_TIMER.getInteger() < 1)
                     return;
@@ -171,7 +171,7 @@ public class MAdvanced extends JavaPlugin {
             }
         }, 20L * 5, 20L * 5);
 
-        getServer().getScheduler().scheduleAsyncRepeatingTask(this, new Runnable() {
+        getServer().getScheduler().scheduleSyncRepeatingTask(this, new Runnable() {
             public void run() {
                 if (ConfigType.OPTION_AFK_KICK_TIMER.getInteger() < 1)
                     return;
