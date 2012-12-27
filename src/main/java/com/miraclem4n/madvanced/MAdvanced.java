@@ -152,8 +152,6 @@ public class MAdvanced extends JavaPlugin {
                 if (ConfigType.OPTION_AFK_TIMER.getInteger() < 1)
                     return;
 
-                ConfigUtil.initialize();
-
                 for (Player player : getServer().getOnlinePlayers()) {
                     if (isAFK.get(player.getName()) == null)
                         isAFK.put(player.getName(), false);
@@ -175,8 +173,6 @@ public class MAdvanced extends JavaPlugin {
             public void run() {
                 if (ConfigType.OPTION_AFK_KICK_TIMER.getInteger() < 1)
                     return;
-
-                ConfigUtil.initialize();
 
                 for (Player player : getServer().getOnlinePlayers()) {
                     if (API.checkPermissions(player.getName(), player.getWorld().getName(), "mchat.bypass.afkkick"))

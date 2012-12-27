@@ -75,8 +75,6 @@ public class ConfigUtil {
         checkOption("aliases.mchatafk", afkAliases);
         checkOption("aliases.mchatafkother", afkOtherAliases);
 
-        unloadAliases();
-
         setupAliasMap();
 
         save();
@@ -110,8 +108,15 @@ public class ConfigUtil {
     }
 
     private static void checkOption(String option, Object defValue) {
+        System.out.println("Option: " + option);
+        System.out.println("Value: " + defValue);
+        System.out.println("IsSet: " + config.isSet(option));
+
         if (!config.isSet(option))
             set(option, defValue);
+
+        System.out.println("Conf Value: " + config.get(option));
+
     }
 
     private static void editOption(String oldOption, String newOption) {
@@ -139,16 +144,6 @@ public class ConfigUtil {
         afkOtherAliases.add("afko");
         afkOtherAliases.add("awayother");
         afkOtherAliases.add("awayo");
-    }
-
-    private static void unloadAliases() {
-        whoAliases.clear();
-
-        listAliases.clear();
-
-        afkAliases.clear();
-
-        afkOtherAliases.clear();
     }
 
     private static void setupAliasMap() {
