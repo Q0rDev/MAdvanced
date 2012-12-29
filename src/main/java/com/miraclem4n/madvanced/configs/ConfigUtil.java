@@ -108,15 +108,8 @@ public class ConfigUtil {
     }
 
     private static void checkOption(String option, Object defValue) {
-        System.out.println("Option: " + option);
-        System.out.println("Value: " + defValue);
-        System.out.println("IsSet: " + config.isSet(option));
-
         if (!config.isSet(option))
             set(option, defValue);
-
-        System.out.println("Conf Value: " + config.get(option));
-
     }
 
     private static void editOption(String oldOption, String newOption) {
