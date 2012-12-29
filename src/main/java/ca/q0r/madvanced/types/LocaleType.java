@@ -1,6 +1,6 @@
-package com.miraclem4n.madvanced.types;
+package ca.q0r.madvanced.types;
 
-import com.miraclem4n.madvanced.configs.LocaleUtil;
+import ca.q0r.madvanced.configs.LocaleUtil;
 import com.miraclem4n.mchat.util.MessageUtil;
 
 public enum LocaleType {

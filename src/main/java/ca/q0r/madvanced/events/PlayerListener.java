@@ -1,8 +1,8 @@
-package com.miraclem4n.madvanced.events;
+package ca.q0r.madvanced.events;
 
-import com.miraclem4n.madvanced.MAdvanced;
-import com.miraclem4n.madvanced.types.ConfigType;
-import com.miraclem4n.madvanced.types.LocaleType;
+import ca.q0r.madvanced.MAdvanced;
+import ca.q0r.madvanced.types.ConfigType;
+import ca.q0r.madvanced.types.LocaleType;
 import com.miraclem4n.mchat.api.Parser;
 import com.miraclem4n.mchat.util.MessageUtil;
 import org.bukkit.Location;

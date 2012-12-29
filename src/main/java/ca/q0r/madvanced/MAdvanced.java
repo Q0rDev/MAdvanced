@@ -1,11 +1,11 @@
-package com.miraclem4n.madvanced;
+package ca.q0r.madvanced;
 
-import com.miraclem4n.madvanced.commands.*;
-import com.miraclem4n.madvanced.configs.ConfigUtil;
-import com.miraclem4n.madvanced.configs.LocaleUtil;
-import com.miraclem4n.madvanced.events.*;
-import com.miraclem4n.madvanced.types.ConfigType;
-import com.miraclem4n.madvanced.types.LocaleType;
+import ca.q0r.madvanced.commands.*;
+import ca.q0r.madvanced.configs.ConfigUtil;
+import ca.q0r.madvanced.configs.LocaleUtil;
+import ca.q0r.madvanced.events.*;
+import ca.q0r.madvanced.types.ConfigType;
+import ca.q0r.madvanced.types.LocaleType;
 import com.miraclem4n.mchat.api.API;
 import com.miraclem4n.mchat.api.Parser;
 import com.miraclem4n.mchat.metrics.Metrics;

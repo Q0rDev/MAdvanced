@@ -1,6 +1,6 @@
-package com.miraclem4n.madvanced.events;
+package ca.q0r.madvanced.events;
 
-import com.miraclem4n.madvanced.MAdvanced;
+import ca.q0r.madvanced.MAdvanced;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;

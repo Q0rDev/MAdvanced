@@ -1,6 +1,6 @@
-package com.miraclem4n.madvanced.commands;
+package ca.q0r.madvanced.commands;
 
-import com.miraclem4n.madvanced.MAdvanced;
+import ca.q0r.madvanced.MAdvanced;
 import com.miraclem4n.mchat.configs.ConfigUtil;
 import com.miraclem4n.mchat.util.MessageUtil;
 import com.miraclem4n.mchat.util.MiscUtil;

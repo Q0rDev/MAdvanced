@@ -1,6 +1,6 @@
-package com.miraclem4n.madvanced.types;
+package ca.q0r.madvanced.types;
 
-import com.miraclem4n.madvanced.configs.ConfigUtil;
+import ca.q0r.madvanced.configs.ConfigUtil;
 import com.miraclem4n.mchat.util.MessageUtil;
 
 import java.util.ArrayList;

@@ -1,8 +1,8 @@
-package com.miraclem4n.madvanced.commands;
+package ca.q0r.madvanced.commands;
 
-import com.miraclem4n.madvanced.MAdvanced;
-import com.miraclem4n.madvanced.types.ConfigType;
-import com.miraclem4n.madvanced.types.LocaleType;
+import ca.q0r.madvanced.MAdvanced;
+import ca.q0r.madvanced.types.ConfigType;
+import ca.q0r.madvanced.types.LocaleType;
 import com.miraclem4n.mchat.api.API;
 import com.miraclem4n.mchat.api.Parser;
 import com.miraclem4n.mchat.types.IndicatorType;

@@ -1,4 +1,4 @@
-package com.miraclem4n.madvanced.configs;
+package ca.q0r.madvanced.configs;
 
 import org.bukkit.configuration.file.YamlConfiguration;
 

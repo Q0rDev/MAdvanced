@@ -1,6 +1,6 @@
-package com.miraclem4n.madvanced.events;
+package ca.q0r.madvanced.events;
 
-import com.miraclem4n.madvanced.configs.ConfigUtil;
+import ca.q0r.madvanced.configs.ConfigUtil;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;

@@ -1,7 +1,7 @@
-package com.miraclem4n.madvanced.commands;
+package ca.q0r.madvanced.commands;
 
-import com.miraclem4n.madvanced.MAdvanced;
-import com.miraclem4n.madvanced.types.LocaleType;
+import ca.q0r.madvanced.MAdvanced;
+import ca.q0r.madvanced.types.LocaleType;
 import com.miraclem4n.mchat.util.MessageUtil;
 import com.miraclem4n.mchat.util.MiscUtil;
 import org.bukkit.command.Command;
