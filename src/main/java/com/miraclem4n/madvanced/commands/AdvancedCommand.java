@@ -1,10 +1,7 @@
 package com.miraclem4n.madvanced.commands;
 
 import com.miraclem4n.madvanced.MAdvanced;
-import com.miraclem4n.mchat.configs.CensorUtil;
 import com.miraclem4n.mchat.configs.ConfigUtil;
-import com.miraclem4n.mchat.configs.InfoUtil;
-import com.miraclem4n.mchat.configs.LocaleUtil;
 import com.miraclem4n.mchat.util.MessageUtil;
 import com.miraclem4n.mchat.util.MiscUtil;
 import org.bukkit.command.Command;

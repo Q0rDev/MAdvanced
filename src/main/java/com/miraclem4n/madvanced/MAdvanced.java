@@ -1,7 +1,6 @@
 package com.miraclem4n.madvanced;
 
 import com.miraclem4n.madvanced.commands.*;
-import com.miraclem4n.madvanced.commands.AFKCommand;
 import com.miraclem4n.madvanced.configs.ConfigUtil;
 import com.miraclem4n.madvanced.configs.LocaleUtil;
 import com.miraclem4n.madvanced.events.*;
