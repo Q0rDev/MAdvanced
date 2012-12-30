@@ -4,7 +4,7 @@
     <!-- Project information -->
     <groupId>ca.q0r</groupId>
     <artifactId>MAdvanced</artifactId>
-    <version>1.4.5-R0.9</version>
+    <version>1.4.5-R0.10</version>
     <name>MAdvanced</name>
     <url>http://mdev.in/</url>
     <description>Advanced MChat functionality</description>

@@ -1,6 +1,7 @@
 package ca.q0r.madvanced.events;
 
 import ca.q0r.madvanced.MAdvanced;
+import ca.q0r.madvanced.types.ConfigType;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -33,7 +34,7 @@ public class EntityListener implements Listener {
                 if (plugin.isAFK.get(player.getName()) == null)
                     return;
 
-                if (plugin.isAFK.get(player.getName())) {
+                if (plugin.isAFK.get(player.getName()) && ConfigType.OPTION_HC_AFK.getBoolean()) {
                     damaged.setLastDamageCause(null);
                     event.setCancelled(true);
                 }
