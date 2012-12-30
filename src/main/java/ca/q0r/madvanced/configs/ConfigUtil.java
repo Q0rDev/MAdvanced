@@ -78,8 +78,6 @@ public class ConfigUtil {
         setupAliasMap();
 
         save();
-
-        System.out.println("-----" + getConfig().get("option.eHQAFK") + "-----");
     }
 
     public static void set(String key, Object obj) {
