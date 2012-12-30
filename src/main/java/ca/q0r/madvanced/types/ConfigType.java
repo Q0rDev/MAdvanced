@@ -22,11 +22,9 @@ public enum ConfigType {
     ALIASES_AFK_OTHER("aliases.mchatafkother");
 
     private final String option;
-    private final Object object;
 
     ConfigType(String option) {
         this.option = option;
-        this.object = getObject();
     }
 
     private Object getObject() {
@@ -42,22 +40,31 @@ public enum ConfigType {
     }
 
     public Boolean getBoolean() {
+        Object object = getObject();
+
         return object instanceof Boolean ? (Boolean) object : false;
     }
 
     public String getString() {
-        return object != null ? object.toString() : null;
+        Object object = getObject();
+
+        return object != null ? object.toString() : "";
     }
 
     public Integer getInteger() {
+        Object object = getObject();
+
         return object instanceof Number ? (Integer) object : 0;
     }
 
     public Double getDouble() {
-        return object instanceof Number ? (Double) object : 0;
+        Object object = getObject();
+
+        return object instanceof Number ? (Double) object : 0.0;
     }
 
     public ArrayList<String> getList() {
+        Object object = getObject();
         ArrayList<String> list = new ArrayList<String>();
 
         if (object instanceof ArrayList) {

@@ -1,7 +1,7 @@
 package ca.q0r.madvanced.commands;
 
 import ca.q0r.madvanced.MAdvanced;
-import com.miraclem4n.mchat.configs.ConfigUtil;
+import ca.q0r.madvanced.configs.ConfigUtil;
 import com.miraclem4n.mchat.util.MessageUtil;
 import com.miraclem4n.mchat.util.MiscUtil;
 import org.bukkit.command.Command;

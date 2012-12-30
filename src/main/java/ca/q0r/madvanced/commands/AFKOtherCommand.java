@@ -16,7 +16,7 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 import org.getspout.spoutapi.player.SpoutPlayer;
 
-import java.util.HashMap;
+import java.util.TreeMap;
 
 public class AFKOtherCommand implements CommandExecutor {
     MAdvanced plugin;
@@ -59,7 +59,7 @@ public class AFKOtherCommand implements CommandExecutor {
             title = ChatColor.valueOf(LocaleType.MESSAGE_SPOUT_COLOUR.getRaw().toUpperCase()) + "- AFK -" + '\n' + title;
         }
 
-        HashMap<String, String> rMap = new HashMap<String, String>();
+        TreeMap<String, String> rMap = new TreeMap<String, String>();
 
         rMap.put("player", Parser.parsePlayerName(afkTarget.getName(), afkTarget.getWorld().getName()));
         rMap.put("reason", message);

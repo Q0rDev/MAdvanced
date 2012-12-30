@@ -17,6 +17,7 @@ import org.bukkit.entity.Player;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.TreeMap;
 
 public class ListCommand implements CommandExecutor {
     MAdvanced plugin;
@@ -30,7 +31,7 @@ public class ListCommand implements CommandExecutor {
                 || !MiscUtil.hasCommandPerm(sender, "mchat.list"))
             return true;
 
-        HashMap<String, String> rMap = new HashMap<String, String>();
+        TreeMap<String, String> rMap = new TreeMap<String, String>();
 
         rMap.put("max", String.valueOf(plugin.getServer().getMaxPlayers()));
         rMap.put("players", String.valueOf(plugin.getServer().getOnlinePlayers().length));
