@@ -42,7 +42,6 @@ public class LocaleUtil {
         checkOption("message.player.notAfk", "%player is no longer AFK.");
         checkOption("message.player.stillAfk", "You are still AFK.");
         checkOption("message.spout.colour", "dark_red");
-        checkOption("message.spout.pmFrom", "[PMChat] From:");
         checkOption("message.spout.typing", "*Typing*");
 
         save();

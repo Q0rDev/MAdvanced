@@ -13,7 +13,6 @@ public enum LocaleType {
     MESSAGE_PLAYER_NOT_AFK("message.player.notAfk"),
     MESSAGE_PLAYER_STILL_AFK("message.player.stillAfk"),
     MESSAGE_SPOUT_COLOUR("message.spout.colour"),
-    MESSAGE_SPOUT_PM("message.spout.pmFrom"),
     MESSAGE_SPOUT_TYPING("message.spout.typing");
 
     private final String option;
