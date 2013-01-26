@@ -19,7 +19,7 @@ import org.getspout.spoutapi.player.SpoutPlayer;
 import java.util.TreeMap;
 
 public class AFKOtherCommand implements CommandExecutor {
-    MAdvanced plugin;
+    private MAdvanced plugin;
 
     public AFKOtherCommand(MAdvanced instance) {
         plugin = instance;

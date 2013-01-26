@@ -203,7 +203,7 @@ public class MAdvanced extends JavaPlugin {
     }
 
     void setupCommands() {
-        regCommands("madvanced", new AdvancedCommand(this));
+        regCommands("madvanced", new AdvancedCommand());
         regCommands("mchatafk", new AFKCommand(this));
         regCommands("mchatafkother", new AFKOtherCommand(this));
         regCommands("mchatlist", new ListCommand(this));

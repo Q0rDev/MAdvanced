@@ -15,7 +15,7 @@ import org.getspout.spoutapi.player.SpoutPlayer;
 import java.util.Date;
 
 public class ChatListener implements Listener {
-    MAdvanced plugin;
+    private MAdvanced plugin;
 
     public ChatListener(MAdvanced instance) {
         plugin = instance;
