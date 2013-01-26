@@ -26,11 +26,8 @@ import java.util.HashMap;
 
 public class MAdvanced extends JavaPlugin {
     // Default Plugin Data
-    public PluginManager pm;
-    public PluginDescriptionFile pdfFile;
-
-    // Metrics
-    public Metrics metrics;
+    private PluginManager pm;
+    private PluginDescriptionFile pdfFile;
 
     // Spout
     public Boolean spoutB = false;
@@ -54,7 +51,7 @@ public class MAdvanced extends JavaPlugin {
             TimerUtil timer = new TimerUtil();
 
             try {
-                metrics = new Metrics(this);
+                Metrics metrics = new Metrics(this);
                 metrics.start();
             } catch (IOException ignored) {}
 
@@ -187,17 +184,12 @@ public class MAdvanced extends JavaPlugin {
         }, 20L * 10, 20L * 10);
     }
 
-    public void initializeConfigs() {
+    private void initializeConfigs() {
         ConfigUtil.initialize();
         LocaleUtil.initialize();
     }
 
-    public void reloadConfigs() {
-        ConfigUtil.initialize();
-        LocaleUtil.initialize();
-    }
-
-    public void unloadConfigs() {
+    private void unloadConfigs() {
         ConfigUtil.dispose();
         LocaleUtil.dispose();
     }

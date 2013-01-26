@@ -6,8 +6,6 @@ import com.miraclem4n.mchat.util.MessageUtil;
 public enum LocaleType {
     MESSAGE_AFK_AFK("message.afk.afk"),
     MESSAGE_AFK_DEFAULT("message.afk.default"),
-    MESSAGE_CONFIG_RELOADED("message.config.reloaded"),
-    MESSAGE_CONFIG_UPDATED("message.config.updated"),
     MESSAGE_LIST_HEADER("message.list.header"),
     MESSAGE_PLAYER_AFK("message.player.afk"),
     MESSAGE_PLAYER_NOT_AFK("message.player.notAfk"),

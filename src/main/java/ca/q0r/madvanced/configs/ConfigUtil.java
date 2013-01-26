@@ -13,12 +13,12 @@ public class ConfigUtil {
     private static File file;
     private static Boolean changed;
 
-    static ArrayList<String> whoAliases;
-    static ArrayList<String> listAliases;
-    static ArrayList<String> afkAliases;
-    static ArrayList<String> afkOtherAliases;
+    private static ArrayList<String> whoAliases;
+    private static ArrayList<String> listAliases;
+    private static ArrayList<String> afkAliases;
+    private static ArrayList<String> afkOtherAliases;
 
-    static HashMap<String, List<String>> aliasMap;
+    private static HashMap<String, List<String>> aliasMap;
 
     public static void initialize() {
         load();

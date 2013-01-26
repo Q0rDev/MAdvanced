@@ -12,7 +12,7 @@ import org.getspout.spoutapi.keyboard.Keyboard;
 import org.getspout.spoutapi.player.SpoutPlayer;
 
 public class CustomListener implements Listener {
-    MAdvanced plugin;
+    private MAdvanced plugin;
 
     public CustomListener(MAdvanced instance) {
         plugin = instance;

@@ -1,6 +1,7 @@
 package ca.q0r.madvanced.commands;
 
 import ca.q0r.madvanced.configs.ConfigUtil;
+import ca.q0r.madvanced.configs.LocaleUtil;
 import com.miraclem4n.mchat.util.MessageUtil;
 import com.miraclem4n.mchat.util.MiscUtil;
 import org.bukkit.command.Command;
@@ -23,6 +24,8 @@ public class AdvancedCommand implements CommandExecutor {
                 return true;
 
             ConfigUtil.initialize();
+            LocaleUtil.initialize();
+
             MessageUtil.sendMessage(sender, "Config Reloaded.");
             return true;
         }

@@ -5,9 +5,9 @@ import org.bukkit.configuration.file.YamlConfiguration;
 import java.io.File;
 
 public class LocaleUtil {
-    static YamlConfiguration config;
-    static File file;
-    static Boolean changed;
+    private static YamlConfiguration config;
+    private static File file;
+    private static Boolean changed;
 
     public static void initialize() {
         load();
@@ -35,8 +35,6 @@ public class LocaleUtil {
     private static void loadDefaults() {
         checkOption("message.afk.afk", "AFK");
         checkOption("message.afk.default", "Away From Keyboard");
-        checkOption("message.config.reloaded", "%config Reloaded.");
-        checkOption("message.config.updated", "%config has been updated.");
         checkOption("message.list.header", "&6-- There are &8%players&6 out of the maximum of &8%max&6 Players online. --");
         checkOption("message.player.afk", "%player is now AFK. [ %reason ]");
         checkOption("message.player.notAfk", "%player is no longer AFK.");

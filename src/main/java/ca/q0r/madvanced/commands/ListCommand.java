@@ -20,7 +20,7 @@ import java.util.Map;
 import java.util.TreeMap;
 
 public class ListCommand implements CommandExecutor {
-    MAdvanced plugin;
+    private MAdvanced plugin;
 
     public ListCommand(MAdvanced instance) {
         plugin = instance;

@@ -14,12 +14,7 @@ public enum ConfigType {
     OPTION_COLLAPSED_LIST_VAR("option.collapsedListVars"),
     OPTION_AFK_TIMER("option.AFKTimer"),
     OPTION_AFK_KICK_TIMER("option.AFKKickTimer"),
-    OPTION_USE_AFK_LIST("option.useAFKList"),
-
-    ALIASES_WHO("aliases.mchatwho"),
-    ALIASES_LIST("aliases.mchatlist"),
-    ALIASES_AFK("aliases.mchatafk"),
-    ALIASES_AFK_OTHER("aliases.mchatafkother");
+    OPTION_USE_AFK_LIST("option.useAFKList");
 
     private final String option;
 

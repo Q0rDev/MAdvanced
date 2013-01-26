@@ -10,13 +10,11 @@ import org.bukkit.event.entity.EntityDamageByEntityEvent;
 import org.bukkit.event.entity.EntityDamageEvent;
 
 public class EntityListener implements Listener {
-    MAdvanced plugin;
+    private MAdvanced plugin;
 
     public EntityListener(MAdvanced instance) {
         plugin = instance;
     }
-
-    Boolean messageTimeout = true;
 
     @EventHandler
     public void onEntityDamage(EntityDamageEvent event) {
