@@ -24,58 +24,29 @@ public enum ConfigType {
     }
 
     public Boolean getBoolean() {
-        Boolean b = ConfigUtil.getConfig().getBoolean(option);
-
-        if (b != null) {
-            return b;
-        }
-
-        return false;
+        return ConfigUtil.getConfig().getBoolean(option, false);
     }
 
     public String getString() {
-        String s = ConfigUtil.getConfig().getString(option);
-
-        if (s != null) {
-            return MessageUtil.addColour(s);
-        }
-
-        return "";
+        return MessageUtil.addColour(ConfigUtil.getConfig().getString(option, ""));
     }
 
     public Integer getInteger() {
-        Integer i = ConfigUtil.getConfig().getInt(option);
-
-        if (i != null) {
-            return i;
-        }
-
-        return 0;
+        return ConfigUtil.getConfig().getInt(option, 0);
     }
 
     public Double getDouble() {
-        Double d = ConfigUtil.getConfig().getDouble(option);
-
-        if (d != null) {
-            return d;
-        }
-
-        return 0.0;
+        return ConfigUtil.getConfig().getDouble(option, 0.0);
     }
 
     public List<String> getList() {
         List<String> list = ConfigUtil.getConfig().getStringList(option);
+        ArrayList<String> l = new ArrayList<String>();
 
-        if (list != null) {
-            ArrayList<String> l = new ArrayList<String>();
-
-            for (String s : list) {
-                l.add(MessageUtil.addColour(s));
-            }
-
-            return l;
+        for (String s : list) {
+            l.add(MessageUtil.addColour(s));
         }
 
-        return list;
+        return l;
     }
 }
