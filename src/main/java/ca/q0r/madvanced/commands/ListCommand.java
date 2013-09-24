@@ -9,7 +9,7 @@ import com.miraclem4n.mchat.api.Reader;
 import com.miraclem4n.mchat.types.IndicatorType;
 import com.miraclem4n.mchat.types.InfoType;
 import com.miraclem4n.mchat.util.MessageUtil;
-import com.miraclem4n.mchat.util.MiscUtil;
+import com.miraclem4n.mchat.util.CommandUtil;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
@@ -28,7 +28,7 @@ public class ListCommand implements CommandExecutor {
 
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
         if (!command.getName().equalsIgnoreCase("mchatlist")
-                || !MiscUtil.hasCommandPerm(sender, "mchat.list"))
+                || !CommandUtil.hasCommandPerm(sender, "mchat.list"))
             return true;
 
         TreeMap<String, String> rMap = new TreeMap<String, String>();

@@ -4,7 +4,7 @@ import ca.q0r.madvanced.MAdvanced;
 import com.miraclem4n.mchat.api.API;
 import com.miraclem4n.mchat.api.Parser;
 import com.miraclem4n.mchat.util.MessageUtil;
-import com.miraclem4n.mchat.util.MiscUtil;
+import com.miraclem4n.mchat.util.CommandUtil;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
@@ -19,11 +19,11 @@ public class WhoCommand implements CommandExecutor {
 
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
         if (!command.getName().equalsIgnoreCase("mchatwho")
-                || !MiscUtil.hasCommandPerm(sender, "mchat.who"))
+                || !CommandUtil.hasCommandPerm(sender, "mchat.who"))
             return true;
 
         if (args.length > 0) {
-            if (MiscUtil.isOnlineForCommand(sender, args[0]))
+            if (CommandUtil.isOnlineForCommand(sender, args[0]))
                 formatWho(sender, plugin.getServer().getPlayer(args[0]));
 
             return true;

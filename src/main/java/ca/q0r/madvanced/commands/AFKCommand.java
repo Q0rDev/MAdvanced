@@ -3,7 +3,7 @@ package ca.q0r.madvanced.commands;
 import ca.q0r.madvanced.MAdvanced;
 import ca.q0r.madvanced.types.LocaleType;
 import com.miraclem4n.mchat.util.MessageUtil;
-import com.miraclem4n.mchat.util.MiscUtil;
+import com.miraclem4n.mchat.util.CommandUtil;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
@@ -18,7 +18,7 @@ public class AFKCommand implements CommandExecutor {
 
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
         if (!command.getName().equalsIgnoreCase("mchatafk")
-                || !MiscUtil.hasCommandPerm(sender,"mchat.afk.self"))
+                || !CommandUtil.hasCommandPerm(sender,"mchat.afk.self"))
             return true;
 
         if (!(sender instanceof Player)) {

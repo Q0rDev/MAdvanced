@@ -7,7 +7,7 @@ import com.miraclem4n.mchat.api.API;
 import com.miraclem4n.mchat.api.Parser;
 import com.miraclem4n.mchat.types.IndicatorType;
 import com.miraclem4n.mchat.util.MessageUtil;
-import com.miraclem4n.mchat.util.MiscUtil;
+import com.miraclem4n.mchat.util.CommandUtil;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.command.Command;
@@ -27,12 +27,12 @@ public class AFKOtherCommand implements CommandExecutor {
 
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
         if (!command.getName().equalsIgnoreCase("mchatafkother")
-                || !MiscUtil.hasCommandPerm(sender, "mchat.afk.other"))
+                || !CommandUtil.hasCommandPerm(sender, "mchat.afk.other"))
             return true;
 
         Player afkTarget = plugin.getServer().getPlayer(args[0]);
 
-        if (!MiscUtil.isOnlineForCommand(sender, afkTarget))
+        if (!CommandUtil.isOnlineForCommand(sender, afkTarget))
             return true;
 
         Boolean isAfk = plugin.isAFK.get(afkTarget.getName()) != null &&

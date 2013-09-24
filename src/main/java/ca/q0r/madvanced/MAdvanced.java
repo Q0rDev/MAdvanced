@@ -8,9 +8,8 @@ import ca.q0r.madvanced.types.ConfigType;
 import ca.q0r.madvanced.types.LocaleType;
 import com.miraclem4n.mchat.api.API;
 import com.miraclem4n.mchat.api.Parser;
-import com.miraclem4n.mchat.metrics.Metrics;
 import com.miraclem4n.mchat.util.MessageUtil;
-import com.miraclem4n.mchat.util.TimerUtil;
+import com.miraclem4n.mchat.util.Timer;
 import org.bukkit.Location;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.entity.Player;
@@ -20,7 +19,6 @@ import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.getspout.spoutapi.player.SpoutPlayer;
 
-import java.io.IOException;
 import java.util.Date;
 import java.util.HashMap;
 
@@ -48,12 +46,18 @@ public class MAdvanced extends JavaPlugin {
 
         try {
             // Initialize and Start the Timer
-            TimerUtil timer = new TimerUtil();
+            Timer timer = new Timer();
 
-            try {
-                Metrics metrics = new Metrics(this);
-                metrics.start();
-            } catch (IOException ignored) {}
+            // Initialize Metrics
+            /*getServer().getScheduler().runTaskLater(this, new BukkitRunnable(){
+				@Override
+				public void run() {
+					try {
+						Metrics metrics = new Metrics(Bukkit.getPluginManager().getPlugin("MAdvanced"));
+			            metrics.start();
+			        } catch (IOException ignored) {}
+				}
+			}, 200);*/
 
             initializeConfigs();
 
@@ -95,7 +99,7 @@ public class MAdvanced extends JavaPlugin {
     public void onDisable() {
         try {
             // Initialize and Start the Timer
-            TimerUtil timer = new TimerUtil();
+            Timer timer = new Timer();
 
             getServer().getScheduler().cancelTasks(this);
 

@@ -3,7 +3,7 @@ package ca.q0r.madvanced.commands;
 import ca.q0r.madvanced.configs.ConfigUtil;
 import ca.q0r.madvanced.configs.LocaleUtil;
 import com.miraclem4n.mchat.util.MessageUtil;
-import com.miraclem4n.mchat.util.MiscUtil;
+import com.miraclem4n.mchat.util.CommandUtil;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
@@ -20,7 +20,7 @@ public class AdvancedCommand implements CommandExecutor {
 
         if (args[0].equalsIgnoreCase("reload")
                 || args[0].equalsIgnoreCase("r")) {
-            if (!MiscUtil.hasCommandPerm(sender, "madvanced.reload"))
+            if (!CommandUtil.hasCommandPerm(sender, "madvanced.reload"))
                 return true;
 
             ConfigUtil.initialize();
