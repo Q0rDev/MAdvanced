@@ -27,13 +27,15 @@ public class AFKOtherCommand implements CommandExecutor {
 
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
         if (!command.getName().equalsIgnoreCase("mchatafkother")
-                || !CommandUtil.hasCommandPerm(sender, "mchat.afk.other"))
+                || !CommandUtil.hasCommandPerm(sender, "mchat.afk.other")) {
             return true;
+        }
 
         Player afkTarget = plugin.getServer().getPlayer(args[0]);
 
-        if (!CommandUtil.isOnlineForCommand(sender, afkTarget))
+        if (!CommandUtil.isOnlineForCommand(sender, afkTarget)) {
             return true;
+        }
 
         Boolean isAfk = plugin.isAFK.get(afkTarget.getName()) != null &&
                 plugin.isAFK.get(afkTarget.getName());
@@ -47,12 +49,14 @@ public class AFKOtherCommand implements CommandExecutor {
 
         if (!isAfk) {
             if (args.length > 1) {
-                for (int i = 1; i < args.length; ++i)
+                for (int i = 1; i < args.length; ++i) {
                     message += " " + args[i];
+                }
 
                 message = message.trim();
-            } else
+            } else {
                 message = "Away From Keyboard";
+            }
 
             notification = LocaleType.MESSAGE_PLAYER_AFK.getVal();
 
@@ -79,8 +83,9 @@ public class AFKOtherCommand implements CommandExecutor {
             SpoutPlayer sPlayer = (SpoutPlayer) afkTarget;
 
             sPlayer.setTitle(title);
-        } else
+        } else {
             plugin.getServer().broadcastMessage(API.replace(notification, rMap, IndicatorType.LOCALE_VAR));
+        }
 
         afkTarget.setSleepingIgnored(!isAfk);
         plugin.isAFK.put(afkTarget.getName(), !isAfk);
@@ -93,12 +98,14 @@ public class AFKOtherCommand implements CommandExecutor {
             pLName = MessageUtil.addColour("<gold>[" + LocaleType.MESSAGE_AFK_AFK.getVal() + "] ") + pLName;
         }
 
-        if (ConfigType.OPTION_USE_AFK_LIST.getBoolean())
+        if (ConfigType.OPTION_USE_AFK_LIST.getBoolean()) {
             if (pLName.length() > 15) {
                 pLName = pLName.substring(0, 16);
                 afkTarget.setPlayerListName(pLName);
-            } else
+            } else {
                 afkTarget.setPlayerListName(pLName);
+            }
+        }
 
         return true;
     }

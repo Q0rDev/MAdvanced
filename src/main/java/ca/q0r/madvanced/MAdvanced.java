@@ -132,13 +132,15 @@ public class MAdvanced extends JavaPlugin {
     void setupPlugins() {
         spoutB = setupPlugin("Spout");
 
-        if (!ConfigType.MCHAT_SPOUT.getBoolean())
+        if (!ConfigType.MCHAT_SPOUT.getBoolean()) {
             spoutB = false;
+        }
     }
 
     void registerEvents() {
-        if (spoutB)
+        if (spoutB) {
             pm.registerEvents(new CustomListener(this), this);
+        }
 
         pm.registerEvents(new ChatListener(this), this);
         pm.registerEvents(new CommandListener(), this);
@@ -149,40 +151,47 @@ public class MAdvanced extends JavaPlugin {
     void setupTasks() {
         getServer().getScheduler().scheduleSyncRepeatingTask(this, new Runnable() {
             public void run() {
-                if (ConfigType.OPTION_AFK_TIMER.getInteger() < 1)
+                if (ConfigType.OPTION_AFK_TIMER.getInteger() < 1) {
                     return;
+                }
 
                 for (Player player : getServer().getOnlinePlayers()) {
-                    if (isAFK.get(player.getName()) == null)
+                    if (isAFK.get(player.getName()) == null) {
                         isAFK.put(player.getName(), false);
+                    }
 
-                    if (isAFK.get(player.getName()) ||
-                            lastMove.get(player.getName()) == null ||
-                            API.checkPermissions(player.getName(), player.getWorld().getName(), "mchat.bypass.afk"))
+                    if (isAFK.get(player.getName()) || lastMove.get(player.getName()) == null
+                            || API.checkPermissions(player.getName(), player.getWorld().getName(), "mchat.bypass.afk")) {
                         continue;
+                    }
 
                     if (new Date().getTime() - (ConfigType.OPTION_AFK_TIMER.getInteger() * 1000) > lastMove.get(player.getName())) {
                         getServer().dispatchCommand(getServer().getConsoleSender(), "mchatafkother " + player.getName() + " " + LocaleType.MESSAGE_AFK_DEFAULT.getVal());
-                    } else
+                    } else {
                         isAFK.put(player.getName(), false);
+                    }
                 }
             }
         }, 20L * 5, 20L * 5);
 
         getServer().getScheduler().scheduleSyncRepeatingTask(this, new Runnable() {
             public void run() {
-                if (ConfigType.OPTION_AFK_KICK_TIMER.getInteger() < 1)
+                if (ConfigType.OPTION_AFK_KICK_TIMER.getInteger() < 1) {
                     return;
+                }
 
                 for (Player player : getServer().getOnlinePlayers()) {
-                    if (API.checkPermissions(player.getName(), player.getWorld().getName(), "mchat.bypass.afkkick"))
+                    if (API.checkPermissions(player.getName(), player.getWorld().getName(), "mchat.bypass.afkkick")) {
                         continue;
+                    }
 
-                    if (!isAFK.get(player.getName()))
+                    if (!isAFK.get(player.getName())) {
                         continue;
+                    }
 
-                    if (new Date().getTime() - (ConfigType.OPTION_AFK_KICK_TIMER.getInteger() * 1000) > lastMove.get(player.getName()))
+                    if (new Date().getTime() - (ConfigType.OPTION_AFK_KICK_TIMER.getInteger() * 1000) > lastMove.get(player.getName())) {
                         player.kickPlayer(LocaleType.MESSAGE_AFK_DEFAULT.getVal());
+                    }
                 }
             }
         }, 20L * 10, 20L * 10);

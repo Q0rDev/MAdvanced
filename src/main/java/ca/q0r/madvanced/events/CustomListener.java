@@ -31,8 +31,9 @@ public class CustomListener implements Listener {
         Keyboard leftKey = player.getLeftKey();
         Keyboard rightKey = player.getRightKey();
 
-        if (plugin.isChatting.get(pName) == null)
+        if (plugin.isChatting.get(pName) == null) {
             plugin.isChatting.put(pName, false);
+        }
 
         if (key == null) return;
 

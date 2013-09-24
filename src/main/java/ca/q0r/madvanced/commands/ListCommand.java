@@ -28,8 +28,9 @@ public class ListCommand implements CommandExecutor {
 
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
         if (!command.getName().equalsIgnoreCase("mchatlist")
-                || !CommandUtil.hasCommandPerm(sender, "mchat.list"))
+                || !CommandUtil.hasCommandPerm(sender, "mchat.list")) {
             return true;
+        }
 
         TreeMap<String, String> rMap = new TreeMap<String, String>();
 
@@ -48,8 +49,9 @@ public class ListCommand implements CommandExecutor {
             if (sender instanceof Player) {
                 Player player = (Player) sender;
 
-                if (!player.canSee(players))
+                if (!player.canSee(players)) {
                     continue;
+                }
             }
 
             String iVar = Reader.getInfo(players.getName(), InfoType.USER, players.getWorld().getName(), ConfigType.OPTION_LIST_VAR.getString());
@@ -57,12 +59,14 @@ public class ListCommand implements CommandExecutor {
 
             Boolean collapsed = false;
 
-            if (iVar.isEmpty())
+            if (iVar.isEmpty()) {
                 iVar = "Default";
+            }
 
             for (String string : ConfigType.OPTION_COLLAPSED_LIST_VAR.getString().split(",")) {
-                if (!iVar.equals(string))
+                if (!iVar.equals(string)) {
                     continue;
+                }
 
                 collapsed = true;
 
@@ -70,48 +74,57 @@ public class ListCommand implements CommandExecutor {
                     Integer sVal = cLMap.get(string);
 
                     cLMap.put(string, sVal+1);
-                } else
+                } else {
                     cLMap.put(string, 1);
+                }
             }
 
-            if (collapsed)
+            if (collapsed) {
                 continue;
+            }
 
-            if (plugin.isAFK.get(players.getName()) != null && plugin.isAFK.get(players.getName()))
-                if (msg.contains(iVar + ": &f"))
+            if (plugin.isAFK.get(players.getName()) != null && plugin.isAFK.get(players.getName())) {
+                if (msg.contains(iVar + ": &f")) {
                     msg = msg.replace(iVar + ": &f", iVar + ": &f&4[" + LocaleType.MESSAGE_AFK_AFK.getVal() + "]" + mName + "&f, &f");
-                else
+                } else {
                     msg += (iVar + ": &f&4[" + LocaleType.MESSAGE_AFK_AFK.getVal() + "]" + mName + "&f, &f" + '\n');
-            else
-            if (msg.contains(iVar + ": &f"))
-                msg = msg.replace(iVar + ": &f", iVar + ": &f" + mName + "&f, &f");
-            else
-                msg += (iVar + ": &f" + mName + "&f, &f" + '\n');
+                }
+            } else {
+                if (msg.contains(iVar + ": &f")) {
+                    msg = msg.replace(iVar + ": &f", iVar + ": &f" + mName + "&f, &f");
+                } else {
+                    msg += (iVar + ": &f" + mName + "&f, &f" + '\n');
+                }
+            }
 
-            if (!msg.contains("" + '\n'))
+            if (!msg.contains("" + '\n')) {
                 msg += '\n';
+            }
         }
 
-        for (Map.Entry<String, Integer> entry : cLMap.entrySet())
+        for (Map.Entry<String, Integer> entry : cLMap.entrySet()) {
             msg += (entry.getKey() + ": &f" + entry.getValue() + '\n');
+        }
 
         if (msg.contains("" + '\n')) {
             if (ConfigType.OPTION_USE_GROUPED_LIST.getBoolean()) {
                 msgS = msg.split("" + '\n');
 
-
-                for (String arg : msgS)
+                for (String arg : msgS) {
                     sender.sendMessage(MessageUtil.addColour(arg));
+                }
             } else {
                 msg = MessageUtil.addColour(msg.replace("" + '\n', "&5 | &f"));
 
                 sender.sendMessage(msg);
             }
-        } else
+        } else {
             sender.sendMessage(MessageUtil.addColour(msg));
+        }
 
-        for (int i = 20; i < MessageUtil.addColour(API.replace(LocaleType.MESSAGE_LIST_HEADER.getVal(), rMap, IndicatorType.LOCALE_VAR)).length(); i++)
+        for (int i = 20; i < MessageUtil.addColour(API.replace(LocaleType.MESSAGE_LIST_HEADER.getVal(), rMap, IndicatorType.LOCALE_VAR)).length(); i++) {
             line += "-";
+        }
 
         sender.sendMessage(MessageUtil.addColour("&6" + line));
 

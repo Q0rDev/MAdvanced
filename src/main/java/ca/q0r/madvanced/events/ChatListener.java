@@ -23,8 +23,9 @@ public class ChatListener implements Listener {
 
     @EventHandler(priority = EventPriority.LOWEST)
     public void onPlayerChat(AsyncPlayerChatEvent event) {
-        if (event.isCancelled())
+        if (event.isCancelled()) {
             return;
+        }
 
         Player player = event.getPlayer();
         String pName = player.getName();
@@ -32,12 +33,15 @@ public class ChatListener implements Listener {
         String world = player.getWorld().getName();
         String msg = event.getMessage();
 
-        if (msg == null)
+        if (msg == null) {
             return;
+        }
 
-        if (plugin.isAFK.get(pName) != null)
-            if (plugin.isAFK.get(pName))
+        if (plugin.isAFK.get(pName) != null) {
+            if (plugin.isAFK.get(pName)) {
                 player.performCommand("mchatafk");
+            }
+        }
 
         plugin.lastMove.put(pName, new Date().getTime());
 
@@ -55,11 +59,12 @@ public class ChatListener implements Listener {
                 public void run() {
                     SpoutPlayer sPlayer = (SpoutPlayer) plugin.getServer().getPlayer(sPName);
 
-                    if (sPlayer != null)
+                    if (sPlayer != null) {
                         sPlayer.setTitle(Parser.parsePlayerName(sPName, sPlayer.getWorld().getName()));
+                    }
                 }
             }, 7 * 20);
-    }
+        }
 
-}
+    }
 }

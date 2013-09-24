@@ -31,16 +31,20 @@ public class PlayerListener implements Listener {
 
         plugin.lastMove.put(pName, new Date().getTime());
 
-        for (String aliases : plugin.getCommand("mchatafk").getAliases())
+        for (String aliases : plugin.getCommand("mchatafk").getAliases()) {
             if (event.getMessage().contains("/" + aliases) ||
-                    event.getMessage().contains("/mchatafk"))
+                    event.getMessage().contains("/mchatafk")) {
                 return;
+            }
+        }
 
-        if (plugin.isAFK.get(pName) == null)
+        if (plugin.isAFK.get(pName) == null) {
             return;
+        }
 
-        if (plugin.isAFK.get(pName))
+        if (plugin.isAFK.get(pName)) {
             plugin.getServer().dispatchCommand(plugin.getServer().getConsoleSender(), "mchatafkother " + pName);
+        }
     }
 
     @EventHandler(priority = EventPriority.LOWEST)
@@ -76,26 +80,32 @@ public class PlayerListener implements Listener {
         String fromLoc = from.getWorld().getName() + "|" + fromX + "|" + fromY + "|" + fromZ;
         String toLoc = to.getWorld().getName() + "|" + toX + "|" + toY + "|" + toZ;
 
-        if (fromLoc.equalsIgnoreCase(toLoc))
+        if (fromLoc.equalsIgnoreCase(toLoc)) {
             return;
+        }
 
-        if (event.isCancelled())
+        if (event.isCancelled()) {
             return;
+        }
 
         Player player = event.getPlayer();
 
         plugin.lastMove.put(player.getName(), new Date().getTime());
 
-        if (plugin.isAFK.get(player.getName()) == null)
+        if (plugin.isAFK.get(player.getName()) == null) {
             return;
+        }
 
-        if (plugin.isAFK.get(player.getName()))
+        if (plugin.isAFK.get(player.getName())) {
             if (ConfigType.OPTION_HC_AFK.getBoolean()) {
-                if (plugin.AFKLoc.get(player.getName()) != null)
+                if (plugin.AFKLoc.get(player.getName()) != null) {
                     player.teleport(plugin.AFKLoc.get(player.getName()));
+                }
 
                 MessageUtil.sendMessage(player, LocaleType.MESSAGE_PLAYER_STILL_AFK.getVal());
-            } else
+            } else {
                 player.performCommand("mchatafk");
+            }
+        }
     }
 }

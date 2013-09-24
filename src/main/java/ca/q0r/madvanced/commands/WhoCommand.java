@@ -19,12 +19,14 @@ public class WhoCommand implements CommandExecutor {
 
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
         if (!command.getName().equalsIgnoreCase("mchatwho")
-                || !CommandUtil.hasCommandPerm(sender, "mchat.who"))
+                || !CommandUtil.hasCommandPerm(sender, "mchat.who")) {
             return true;
+        }
 
         if (args.length > 0) {
-            if (CommandUtil.isOnlineForCommand(sender, args[0]))
+            if (CommandUtil.isOnlineForCommand(sender, args[0])) {
                 formatWho(sender, plugin.getServer().getPlayer(args[0]));
+            }
 
             return true;
         }

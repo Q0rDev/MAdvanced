@@ -27,8 +27,9 @@ public enum LocaleType {
     }
 
     public String getRaw() {
-        if (LocaleUtil.getConfig().isSet(option))
+        if (LocaleUtil.getConfig().isSet(option)) {
             return LocaleUtil.getConfig().getString(option);
+        }
 
         return "Locale Option '" + option + "' not found!";
     }

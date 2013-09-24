@@ -12,16 +12,19 @@ public class AdvancedCommand implements CommandExecutor {
     public AdvancedCommand() { }
 
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
-        if (!command.getName().equalsIgnoreCase("madvanced"))
+        if (!command.getName().equalsIgnoreCase("madvanced")) {
             return true;
+        }
 
-        if (args.length == 0)
+        if (args.length == 0) {
             return false;
+        }
 
         if (args[0].equalsIgnoreCase("reload")
                 || args[0].equalsIgnoreCase("r")) {
-            if (!CommandUtil.hasCommandPerm(sender, "madvanced.reload"))
+            if (!CommandUtil.hasCommandPerm(sender, "madvanced.reload")) {
                 return true;
+            }
 
             ConfigUtil.initialize();
             LocaleUtil.initialize();

@@ -18,8 +18,9 @@ public class AFKCommand implements CommandExecutor {
 
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
         if (!command.getName().equalsIgnoreCase("mchatafk")
-                || !CommandUtil.hasCommandPerm(sender,"mchat.afk.self"))
+                || !CommandUtil.hasCommandPerm(sender,"mchat.afk.self")) {
             return true;
+        }
 
         if (!(sender instanceof Player)) {
             MessageUtil.sendMessage(sender, "Console's can't be AFK.");
@@ -29,12 +30,14 @@ public class AFKCommand implements CommandExecutor {
         String message = "";
 
         if (args.length > 0) {
-            for (String arg : args)
+            for (String arg : args) {
                 message += " " + arg;
+            }
 
             message = message.trim();
-        } else
+        } else {
             message = LocaleType.MESSAGE_AFK_DEFAULT.getVal();
+        }
 
         Player player = (Player) sender;
 
@@ -48,7 +51,6 @@ public class AFKCommand implements CommandExecutor {
     }
 
     Boolean isAfk(String player) {
-        return plugin.isAFK.get(player) != null
-                && plugin.isAFK.get(player);
+        return plugin.isAFK.get(player) != null && plugin.isAFK.get(player);
     }
 }
