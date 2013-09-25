@@ -1,10 +1,10 @@
 package ca.q0r.madvanced.commands;
 
 import ca.q0r.madvanced.MAdvanced;
-import com.miraclem4n.mchat.api.API;
-import com.miraclem4n.mchat.api.Parser;
-import com.miraclem4n.mchat.util.MessageUtil;
-import com.miraclem4n.mchat.util.CommandUtil;
+import ca.q0r.mchat.api.API;
+import ca.q0r.mchat.api.Parser;
+import ca.q0r.mchat.util.CommandUtil;
+import ca.q0r.mchat.util.MessageUtil;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;

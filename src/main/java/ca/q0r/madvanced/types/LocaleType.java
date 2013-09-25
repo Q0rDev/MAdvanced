@@ -1,7 +1,7 @@
 package ca.q0r.madvanced.types;
 
 import ca.q0r.madvanced.configs.LocaleUtil;
-import com.miraclem4n.mchat.util.MessageUtil;
+import ca.q0r.mchat.util.MessageUtil;
 
 public enum LocaleType {
     MESSAGE_AFK_AFK("message.afk.afk"),
