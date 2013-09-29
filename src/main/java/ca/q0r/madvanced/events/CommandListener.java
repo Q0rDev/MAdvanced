@@ -1,6 +1,8 @@
 package ca.q0r.madvanced.events;
 
-import ca.q0r.madvanced.configs.ConfigUtil;
+import ca.q0r.madvanced.yml.YmlManager;
+import ca.q0r.madvanced.yml.YmlType;
+import ca.q0r.madvanced.yml.config.ConfigYml;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
@@ -17,7 +19,7 @@ public class CommandListener implements Listener {
         String msg = event.getMessage();
         String command = msg.split(" ")[0].replace("/", "");
 
-        for (Map.Entry<String, List<String>> entry : ConfigUtil.getAliasMap().entrySet()) {
+        for (Map.Entry<String, List<String>> entry : ((ConfigYml) YmlManager.getYml(YmlType.CONFIG_YML)).getAliasMap().entrySet()) {
             for (String comm : entry.getValue()) {
                 if (comm.equalsIgnoreCase(command)) {
                     event.setMessage(msg.replaceFirst("/" + command, "/" + entry.getKey()));

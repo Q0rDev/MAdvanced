@@ -1,7 +1,7 @@
 package ca.q0r.madvanced.events;
 
 import ca.q0r.madvanced.MAdvanced;
-import ca.q0r.madvanced.types.ConfigType;
+import ca.q0r.madvanced.yml.config.ConfigType;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;

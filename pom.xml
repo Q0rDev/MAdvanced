@@ -4,7 +4,7 @@
     <!-- Project information -->
     <groupId>ca.q0r</groupId>
     <artifactId>MAdvanced</artifactId>
-    <version>1.6.4-R0.3</version>
+    <version>1.6.4-R0.4</version>
     <name>MAdvanced</name>
     <url>http://mdev.in/</url>
     <description>Advanced MChat functionality</description>
@@ -97,14 +97,7 @@
         <dependency>
             <groupId>ca.q0r</groupId>
             <artifactId>MChat</artifactId>
-            <version>1.6.4-R0.2</version>
-            <type>jar</type>
-            <scope>compile</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.getspout</groupId>
-            <artifactId>spoutpluginapi</artifactId>
-            <version>dev-SNAPSHOT</version>
+            <version>1.6.4-R0.5</version>
             <type>jar</type>
             <scope>compile</scope>
         </dependency>

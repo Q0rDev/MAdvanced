@@ -1,7 +1,7 @@
 package ca.q0r.madvanced.commands;
 
 import ca.q0r.madvanced.MAdvanced;
-import ca.q0r.madvanced.types.LocaleType;
+import ca.q0r.madvanced.yml.locale.LocaleType;
 import ca.q0r.mchat.util.CommandUtil;
 import ca.q0r.mchat.util.MessageUtil;
 import org.bukkit.command.Command;

@@ -1,11 +1,10 @@
 package ca.q0r.madvanced;
 
 import ca.q0r.madvanced.commands.*;
-import ca.q0r.madvanced.configs.ConfigUtil;
-import ca.q0r.madvanced.configs.LocaleUtil;
 import ca.q0r.madvanced.events.*;
-import ca.q0r.madvanced.types.ConfigType;
-import ca.q0r.madvanced.types.LocaleType;
+import ca.q0r.madvanced.yml.YmlManager;
+import ca.q0r.madvanced.yml.config.ConfigType;
+import ca.q0r.madvanced.yml.locale.LocaleType;
 import ca.q0r.mchat.api.API;
 import ca.q0r.mchat.api.Parser;
 import ca.q0r.mchat.util.MessageUtil;
@@ -59,7 +58,8 @@ public class MAdvanced extends JavaPlugin {
 				}
 			}, 200);*/
 
-            initializeConfigs();
+            // Load Yml
+            YmlManager.initialize();
 
             // Setup Plugins
             setupPlugins();
@@ -103,7 +103,8 @@ public class MAdvanced extends JavaPlugin {
 
             getServer().getScheduler().cancelTasks(this);
 
-            unloadConfigs();
+            // Unload Yml
+            YmlManager.unload();
 
             // Stop the Timer
             timer.stop();
@@ -195,16 +196,6 @@ public class MAdvanced extends JavaPlugin {
                 }
             }
         }, 20L * 10, 20L * 10);
-    }
-
-    private void initializeConfigs() {
-        ConfigUtil.initialize();
-        LocaleUtil.initialize();
-    }
-
-    private void unloadConfigs() {
-        ConfigUtil.dispose();
-        LocaleUtil.dispose();
     }
 
     void setupCommands() {

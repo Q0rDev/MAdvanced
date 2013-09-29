@@ -1,7 +1,9 @@
 package ca.q0r.madvanced.commands;
 
-import ca.q0r.madvanced.configs.ConfigUtil;
-import ca.q0r.madvanced.configs.LocaleUtil;
+import ca.q0r.madvanced.yml.YmlManager;
+import ca.q0r.madvanced.yml.YmlType;
+import ca.q0r.madvanced.yml.config.ConfigYml;
+import ca.q0r.madvanced.yml.locale.LocaleYml;
 import ca.q0r.mchat.util.CommandUtil;
 import ca.q0r.mchat.util.MessageUtil;
 import org.bukkit.command.Command;
@@ -26,8 +28,8 @@ public class AdvancedCommand implements CommandExecutor {
                 return true;
             }
 
-            ConfigUtil.initialize();
-            LocaleUtil.initialize();
+            YmlManager.reloadYml(YmlType.CONFIG_YML);
+            YmlManager.reloadYml(YmlType.LOCALE_YML);
 
             MessageUtil.sendMessage(sender, "Config Reloaded.");
             return true;

@@ -1,8 +1,8 @@
 package ca.q0r.madvanced.commands;
 
 import ca.q0r.madvanced.MAdvanced;
-import ca.q0r.madvanced.types.ConfigType;
-import ca.q0r.madvanced.types.LocaleType;
+import ca.q0r.madvanced.yml.config.ConfigType;
+import ca.q0r.madvanced.yml.locale.LocaleType;
 import ca.q0r.mchat.api.API;
 import ca.q0r.mchat.api.Parser;
 import ca.q0r.mchat.types.IndicatorType;
