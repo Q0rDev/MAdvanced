@@ -4,14 +4,14 @@
     <!-- Project information -->
     <groupId>ca.q0r</groupId>
     <artifactId>MAdvanced</artifactId>
-    <version>1.6.4-R0.4</version>
+    <version>1.6.4-R0.5</version>
     <name>MAdvanced</name>
     <url>http://mdev.in/</url>
     <description>Advanced MChat functionality</description>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <build.number>Unknown</build.number>
+        <build.number>b0jnks</build.number>
     </properties>
 
     <!-- Source code -->
