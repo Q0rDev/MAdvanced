@@ -3,7 +3,7 @@ main: ca.q0r.madvanced.MAdvanced
 version: ${version}-${build.number}
 author: MiracleM4n
 authors: [MiracleM4n]
-website: http://mdev.in/
+website: http://q0r.ca/
 softdepend: [mChatSuite, MChat, Spout, SpoutPlugin]
 description: Advanced MChat functionality
 commands:
