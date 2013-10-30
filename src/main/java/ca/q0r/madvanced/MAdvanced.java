@@ -7,8 +7,10 @@ import ca.q0r.madvanced.yml.config.ConfigType;
 import ca.q0r.madvanced.yml.locale.LocaleType;
 import ca.q0r.mchat.api.API;
 import ca.q0r.mchat.api.Parser;
+import ca.q0r.mchat.metrics.Metrics;
 import ca.q0r.mchat.util.MessageUtil;
 import ca.q0r.mchat.util.Timer;
+import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.entity.Player;
@@ -16,6 +18,7 @@ import org.bukkit.plugin.Plugin;
 import org.bukkit.plugin.PluginDescriptionFile;
 import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
+import org.bukkit.scheduler.BukkitRunnable;
 import org.getspout.spoutapi.player.SpoutPlayer;
 
 import java.util.Date;
@@ -48,15 +51,15 @@ public class MAdvanced extends JavaPlugin {
             Timer timer = new Timer();
 
             // Initialize Metrics
-            /*getServer().getScheduler().runTaskLater(this, new BukkitRunnable(){
+            getServer().getScheduler().runTaskLater(this, new BukkitRunnable(){
 				@Override
 				public void run() {
 					try {
 						Metrics metrics = new Metrics(Bukkit.getPluginManager().getPlugin("MAdvanced"));
 			            metrics.start();
-			        } catch (IOException ignored) {}
+			        } catch (Exception ignored) {}
 				}
-			}, 200);*/
+			}, 200);
 
             // Load Yml
             YmlManager.initialize();
