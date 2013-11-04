@@ -9,12 +9,10 @@ import ca.q0r.mchat.types.IndicatorType;
 import ca.q0r.mchat.util.CommandUtil;
 import ca.q0r.mchat.util.MessageUtil;
 import org.bukkit.ChatColor;
-import org.bukkit.Material;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
-import org.getspout.spoutapi.player.SpoutPlayer;
 
 import java.util.TreeMap;
 
@@ -59,8 +57,6 @@ public class AFKOtherCommand implements CommandExecutor {
             }
 
             notification = LocaleType.MESSAGE_PLAYER_AFK.getVal();
-
-            title = ChatColor.valueOf(LocaleType.MESSAGE_SPOUT_COLOUR.getRaw().toUpperCase()) + "- AFK -" + '\n' + title;
         }
 
         TreeMap<String, String> rMap = new TreeMap<String, String>();
@@ -69,23 +65,7 @@ public class AFKOtherCommand implements CommandExecutor {
         rMap.put("reason", message);
         rMap.put("r", message);
 
-        if (plugin.spoutB) {
-            for (Player players : plugin.getServer().getOnlinePlayers()) {
-                SpoutPlayer sPlayers = (SpoutPlayer) players;
-
-                if (sPlayers.isSpoutCraftEnabled()) {
-                    sPlayers.sendNotification(afkTarget.getName(), API.replace(notification, "player", "", IndicatorType.LOCALE_VAR), Material.PAPER);
-                } else {
-                    players.sendMessage(API.replace(notification, rMap, IndicatorType.LOCALE_VAR));
-                }
-            }
-
-            SpoutPlayer sPlayer = (SpoutPlayer) afkTarget;
-
-            sPlayer.setTitle(title);
-        } else {
-            plugin.getServer().broadcastMessage(API.replace(notification, rMap, IndicatorType.LOCALE_VAR));
-        }
+        plugin.getServer().broadcastMessage(API.replace(notification, rMap, IndicatorType.LOCALE_VAR));
 
         afkTarget.setSleepingIgnored(!isAfk);
         plugin.isAFK.put(afkTarget.getName(), !isAfk);

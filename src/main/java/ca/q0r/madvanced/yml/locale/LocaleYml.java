@@ -18,8 +18,6 @@ public class LocaleYml extends Yml {
         checkOption("message.player.afk", "%player is now AFK. [ %reason ]");
         checkOption("message.player.notAfk", "%player is no longer AFK.");
         checkOption("message.player.stillAfk", "You are still AFK.");
-        checkOption("message.spout.colour", "dark_red");
-        checkOption("message.spout.typing", "*Typing*");
 
         save();
     }

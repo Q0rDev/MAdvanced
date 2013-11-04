@@ -2,8 +2,6 @@ package ca.q0r.madvanced.commands;
 
 import ca.q0r.madvanced.yml.YmlManager;
 import ca.q0r.madvanced.yml.YmlType;
-import ca.q0r.madvanced.yml.config.ConfigYml;
-import ca.q0r.madvanced.yml.locale.LocaleYml;
 import ca.q0r.mchat.util.CommandUtil;
 import ca.q0r.mchat.util.MessageUtil;
 import org.bukkit.command.Command;

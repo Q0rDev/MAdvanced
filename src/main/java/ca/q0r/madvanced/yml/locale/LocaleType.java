@@ -10,10 +10,7 @@ public enum LocaleType {
     MESSAGE_LIST_HEADER("message.list.header"),
     MESSAGE_PLAYER_AFK("message.player.afk"),
     MESSAGE_PLAYER_NOT_AFK("message.player.notAfk"),
-    MESSAGE_PLAYER_STILL_AFK("message.player.stillAfk"),
-    MESSAGE_SPOUT_COLOUR("message.spout.colour"),
-    MESSAGE_SPOUT_TYPING("message.spout.typing");
-
+    MESSAGE_PLAYER_STILL_AFK("message.player.stillAfk");
     private final String option;
 
     LocaleType(String option) {

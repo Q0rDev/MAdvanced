@@ -1,12 +1,14 @@
 package ca.q0r.madvanced;
 
 import ca.q0r.madvanced.commands.*;
-import ca.q0r.madvanced.events.*;
+import ca.q0r.madvanced.events.ChatListener;
+import ca.q0r.madvanced.events.CommandListener;
+import ca.q0r.madvanced.events.EntityListener;
+import ca.q0r.madvanced.events.PlayerListener;
 import ca.q0r.madvanced.yml.YmlManager;
 import ca.q0r.madvanced.yml.config.ConfigType;
 import ca.q0r.madvanced.yml.locale.LocaleType;
 import ca.q0r.mchat.api.API;
-import ca.q0r.mchat.api.Parser;
 import ca.q0r.mchat.metrics.Metrics;
 import ca.q0r.mchat.util.MessageUtil;
 import ca.q0r.mchat.util.Timer;
@@ -14,12 +16,10 @@ import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.entity.Player;
-import org.bukkit.plugin.Plugin;
 import org.bukkit.plugin.PluginDescriptionFile;
 import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.bukkit.scheduler.BukkitRunnable;
-import org.getspout.spoutapi.player.SpoutPlayer;
 
 import java.util.Date;
 import java.util.HashMap;
@@ -28,9 +28,6 @@ public class MAdvanced extends JavaPlugin {
     // Default Plugin Data
     private PluginManager pm;
     private PluginDescriptionFile pdfFile;
-
-    // Spout
-    public Boolean spoutB = false;
 
     // Maps
     public HashMap<String, Boolean> isChatting = new HashMap<String, Boolean>();
@@ -64,9 +61,6 @@ public class MAdvanced extends JavaPlugin {
             // Load Yml
             YmlManager.initialize();
 
-            // Setup Plugins
-            setupPlugins();
-
             // Register Events
             registerEvents();
 
@@ -80,11 +74,6 @@ public class MAdvanced extends JavaPlugin {
                 isChatting.put(players.getName(), false);
                 isAFK.put(players.getName(), false);
                 lastMove.put(players.getName(), new Date().getTime());
-
-                if (spoutB) {
-                    SpoutPlayer sPlayers = (SpoutPlayer) players;
-                    sPlayers.setTitle(Parser.parsePlayerName(players.getName(), players.getWorld().getName()));
-                }
             }
 
             // Stop the Timer
@@ -122,30 +111,7 @@ public class MAdvanced extends JavaPlugin {
         }
     }
 
-    Boolean setupPlugin(String pluginName) {
-        Plugin plugin = pm.getPlugin(pluginName);
-
-        if (plugin != null) {
-            MessageUtil.log("[" + pdfFile.getName() + "] <Plugin> " + plugin.getDescription().getName() + " v" + plugin.getDescription().getVersion() + " hooked!.");
-            return true;
-        }
-
-        return false;
-    }
-
-    void setupPlugins() {
-        spoutB = setupPlugin("Spout");
-
-        if (!ConfigType.MCHAT_SPOUT.getBoolean()) {
-            spoutB = false;
-        }
-    }
-
     void registerEvents() {
-        if (spoutB) {
-            pm.registerEvents(new CustomListener(this), this);
-        }
-
         pm.registerEvents(new ChatListener(this), this);
         pm.registerEvents(new CommandListener(), this);
         pm.registerEvents(new EntityListener(this), this);

@@ -3,7 +3,6 @@ package ca.q0r.madvanced.events;
 import ca.q0r.madvanced.MAdvanced;
 import ca.q0r.madvanced.yml.config.ConfigType;
 import ca.q0r.madvanced.yml.locale.LocaleType;
-import ca.q0r.mchat.api.Parser;
 import ca.q0r.mchat.util.MessageUtil;
 import org.bukkit.Location;
 import org.bukkit.entity.Player;
@@ -13,7 +12,6 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerCommandPreprocessEvent;
 import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.event.player.PlayerMoveEvent;
-import org.getspout.spoutapi.player.SpoutPlayer;
 
 import java.util.Date;
 
@@ -50,17 +48,10 @@ public class PlayerListener implements Listener {
     @EventHandler(priority = EventPriority.LOWEST)
     public void onPlayerJoin(PlayerJoinEvent event) {
         Player player = event.getPlayer();
-        String world = player.getWorld().getName();
-        String pName = player.getName();
 
         plugin.isChatting.put(player.getName(), false);
         plugin.isAFK.put(player.getName(), false);
         plugin.lastMove.put(player.getName(), new Date().getTime());
-
-        if (plugin.spoutB) {
-            SpoutPlayer sPlayer = (SpoutPlayer) player;
-            sPlayer.setTitle(Parser.parsePlayerName(pName, world));
-        }
     }
 
     @EventHandler

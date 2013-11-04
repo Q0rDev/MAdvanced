@@ -8,8 +8,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 public enum ConfigType {
-    MCHAT_SPOUT("plugin.spout"),
-
     OPTION_HC_AFK("option.eHQAFK"),
     OPTION_USE_GROUPED_LIST("option.useGroupedList"),
     OPTION_LIST_VAR("option.listVar"),

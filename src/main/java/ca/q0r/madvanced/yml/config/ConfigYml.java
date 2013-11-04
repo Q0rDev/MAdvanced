@@ -30,8 +30,6 @@ public class ConfigYml extends Yml {
     }
 
     public void loadDefaults() {
-        checkOption("plugin.spout", true);
-
         checkOption("option.eHQAFK", true);
         checkOption("option.useGroupedList", true);
         checkOption("option.listVar", "group");
