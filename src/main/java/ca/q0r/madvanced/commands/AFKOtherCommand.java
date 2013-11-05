@@ -8,7 +8,6 @@ import ca.q0r.mchat.api.Parser;
 import ca.q0r.mchat.types.IndicatorType;
 import ca.q0r.mchat.util.CommandUtil;
 import ca.q0r.mchat.util.MessageUtil;
-import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
