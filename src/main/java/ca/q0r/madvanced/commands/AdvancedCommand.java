@@ -9,7 +9,8 @@ import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 
 public class AdvancedCommand implements CommandExecutor {
-    public AdvancedCommand() { }
+    public AdvancedCommand() {
+    }
 
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
         if (!command.getName().equalsIgnoreCase("madvanced")) {

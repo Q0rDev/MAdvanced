@@ -48,15 +48,16 @@ public class MAdvanced extends JavaPlugin {
             Timer timer = new Timer();
 
             // Initialize Metrics
-            getServer().getScheduler().runTaskLater(this, new BukkitRunnable(){
-				@Override
-				public void run() {
-					try {
-						Metrics metrics = new Metrics(Bukkit.getPluginManager().getPlugin("MAdvanced"));
-			            metrics.start();
-			        } catch (Exception ignored) {}
-				}
-			}, 200);
+            getServer().getScheduler().runTaskLater(this, new BukkitRunnable() {
+                @Override
+                public void run() {
+                    try {
+                        Metrics metrics = new Metrics(Bukkit.getPluginManager().getPlugin("MAdvanced"));
+                        metrics.start();
+                    } catch (Exception ignored) {
+                    }
+                }
+            }, 200);
 
             // Load Yml
             YmlManager.initialize();
@@ -83,7 +84,7 @@ public class MAdvanced extends JavaPlugin {
             long diff = timer.difference();
 
             MessageUtil.log("[" + pdfFile.getName() + "] " + pdfFile.getName() + " v" + pdfFile.getVersion() + " is enabled! [" + diff + "ms]");
-        } catch(NoClassDefFoundError ignored) {
+        } catch (NoClassDefFoundError ignored) {
             pm.disablePlugin(this);
         }
     }
@@ -105,7 +106,7 @@ public class MAdvanced extends JavaPlugin {
             long diff = timer.difference();
 
             MessageUtil.log("[" + pdfFile.getName() + "] " + pdfFile.getName() + " v" + pdfFile.getVersion() + " is disabled! [" + diff + "ms]");
-        } catch(NoClassDefFoundError ignored) {
+        } catch (NoClassDefFoundError ignored) {
             System.err.println("[" + pdfFile.getName() + "] MChat not found disabling!");
             System.out.println("[" + pdfFile.getName() + "] " + pdfFile.getName() + " v" + pdfFile.getVersion() + " is disabled!");
         }

@@ -73,7 +73,7 @@ public class ListCommand implements CommandExecutor {
                 if (cLMap.get(string) != null) {
                     Integer sVal = cLMap.get(string);
 
-                    cLMap.put(string, sVal+1);
+                    cLMap.put(string, sVal + 1);
                 } else {
                     cLMap.put(string, 1);
                 }

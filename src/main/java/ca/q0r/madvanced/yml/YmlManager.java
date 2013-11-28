@@ -24,6 +24,7 @@ public class YmlManager {
 
     /**
      * YML retriever.
+     *
      * @param type Type of Config to get.
      * @return YML Config.
      */
@@ -39,6 +40,7 @@ public class YmlManager {
 
     /**
      * YML Reloader.
+     *
      * @param type Type of Config to reload.
      */
     public static void reloadYml(YmlType type) {

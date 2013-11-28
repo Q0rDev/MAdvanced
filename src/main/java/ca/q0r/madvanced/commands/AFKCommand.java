@@ -18,7 +18,7 @@ public class AFKCommand implements CommandExecutor {
 
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
         if (!command.getName().equalsIgnoreCase("mchatafk")
-                || !CommandUtil.hasCommandPerm(sender,"mchat.afk.self")) {
+                || !CommandUtil.hasCommandPerm(sender, "mchat.afk.self")) {
             return true;
         }
 
