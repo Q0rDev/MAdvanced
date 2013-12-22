@@ -11,6 +11,7 @@ public enum LocaleType {
     MESSAGE_PLAYER_AFK("message.player.afk"),
     MESSAGE_PLAYER_NOT_AFK("message.player.notAfk"),
     MESSAGE_PLAYER_STILL_AFK("message.player.stillAfk");
+
     private final String option;
 
     LocaleType(String option) {
