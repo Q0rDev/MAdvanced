@@ -1,0 +1,23 @@
+# Source language and JDK version to use.
+language: java
+jdk: oraclejdk7
+
+# Compile and package JAR and set build properties.
+install: mvn package -Dbuild.number=b$TRAVIS_BUILD_NUMBERtrvs
+after_success:
+  # Get files for use with build, namely the custom Maven settings.xml.
+  - "git clone https://github.com/Q0rDev/travis-ci-resources.git target/travis"
+  # Check if commit is not a pull request, if git repo is official, and if branch is master. If checks pass, deploy artifacts to Maven repository.
+  - "[[ $TRAVIS_PULL_REQUEST == false ]] && [[ $TRAVIS_REPO_SLUG == Q0rDev/MAdvanced ]] && [[ $TRAVIS_BRANCH == master ]] && mvn deploy --settings target/travis/settings.xml"
+
+notifications:
+  # Disable build status email notifications, until the issue with forks is fixed.
+  email: false
+  webhooks:
+    # Send build information and status to Notifico.
+    - http://n.tkte.ch/h/2334/hfNKk2CpBy35lwAuGt0T7Pf-
+
+env:
+  global:
+    - secure: "PyH2gpVSPHhgnkyCDMeCpc9qYebNL37z8QZ80e71mojgcAJqV1mujVp/XcaFxKruHm/G9GFesb2bonEr5Ua5LUj3wkCj8R+MiTZExvxyajPM0TaI986yx6NQIwa/1mXvYRTh2uFuai5fIJqw8sBii/EQUnkoUNGtkL9ZhUlVDeg="
+    - secure: "QehZmGAxizSA9GRw4djRKvswlwzYkyjgNnF8r8irkXVJ0Z5vr/LlnIA644an+IxlFGOkdpFKRrakFS9AnXQq6qDmnqSnnwReoaLmQ7NeGHSLSO4sO2M3LcLjzk43GunreeooAYAmLfU1I+3KYBEBj1XZSGq+OKJ04iLSoRNYQ4M="
