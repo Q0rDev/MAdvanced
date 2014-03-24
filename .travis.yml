@@ -2,13 +2,15 @@
 language: java
 jdk: oraclejdk7
 
-# Compile and package JAR and set build properties.
-install: mvn package -DbuildNumber=b${TRAVIS_BUILD_NUMBER}trvs
-after_success:
-  # Get files for use with build, namely the custom Maven settings.xml.
+# Get files for use with build, namely the custom Maven settings.xml.
+before install:
   - "git clone https://github.com/Q0rDev/travis-ci-resources.git target/travis"
-  # Check if commit is not a pull request, if git repo is official, and if branch is master. If checks pass, deploy artifacts to Maven repository.
-  - "[[ $TRAVIS_PULL_REQUEST == false ]] && [[ $TRAVIS_REPO_SLUG == Q0rDev/MAdvanced ]] && [[ $TRAVIS_BRANCH == master ]] && mvn deploy --settings target/travis/settings.xml"
+  - "chmod +x target/travis/build.sh"
+  - "gem install travis-artifacts"
+
+# Compile and package JAR and set build properties.
+install: ./target/travis/build.sh
+script: true
 
 notifications:
   # Disable build status email notifications, until the issue with forks is fixed.
@@ -21,3 +23,7 @@ env:
   global:
     - secure: "KA1+cNzz2Ud5LzqsdLIS76c2fATzwA0Po4cku4IWKKTTvo8n26HlCr6b9QBsIU578zhyjQXKhebcUWIC8BpGKFhXypmuFLIMVd9ZsiHy7gXbojnRiE4wWwYQHkL2fLO3rnPwQ59PtUGioHS8dZPHHfIXVxqqLl91/MBQmIS7oKY="
     - secure: "fi//FRXLIiEDkWBNgGTVvJZDXqQA9HQ1ZCptrOHS2PF1Z0wEL3BtobI4DqgL76WM1nPJVkJ159sYfAPxfeW/INhbUGqO87ImdCSCPXbjEaj0shj+W9/7ydQyCFiqLyxoSI4YIdY6SYkf6wnx9hSiKRrhX91NcZmtTS+mXjkG620="
+    - "ARTIFACTS_AWS_REGION=us-east-1"
+    - "ARTIFACTS_S3_BUCKET=q0r-artifacts"
+    - secure: "FgTF2EHa7GJ/75VXzIBI9CS4L4/Ie8vxrfRtbtHB+tJqGVoK+ezOyDPiLYn5I0lGLeJJtBVJUVv7CTGua/2YQuNXTTZH0ydh+pTASHAAGZbJLIWrnPzw1q2YV9x8TdDHEmjcc2ibmRN1iU7UinFVULoGoQCLtjPKQwjia9NmpiE="
+    - secure: "a11tG2dif0fWA3HVMIRYV2LL68YWu2NfEuUWbmXAmqjhdzhDz63m+NZyCg2UfVmB5UZ0v5R3tOhiQ18jhrvOGthrdZncgP/1BPg59gHIGkM51AvS2Rsqlsh+mwc0sYi9ZMbBMR4Q6qjlg9fgdMLbrX11sPTNDAroWS4prhysvVI="
