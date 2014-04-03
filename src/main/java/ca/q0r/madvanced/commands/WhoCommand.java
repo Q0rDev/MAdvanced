@@ -47,6 +47,7 @@ public class WhoCommand implements CommandExecutor {
         Integer exp = recipient.getLevel();
 
         MessageUtil.sendColouredMessage(sender, "Player Name: " + recipient.getName());
+        MessageUtil.sendColouredMessage(sender, "Player UUID: " + recipient.getUniqueId());
         MessageUtil.sendColouredMessage(sender, "Display Name: " + recipient.getDisplayName());
         MessageUtil.sendColouredMessage(sender, "Formatted Name: " + recipientName);
         MessageUtil.sendColouredMessage(sender, "Player's Location: [ " + loc + " ]");

@@ -23,6 +23,7 @@ import org.bukkit.scheduler.BukkitRunnable;
 
 import java.util.Date;
 import java.util.HashMap;
+import java.util.UUID;
 
 public class MAdvanced extends JavaPlugin {
     // Default Plugin Data
@@ -30,12 +31,12 @@ public class MAdvanced extends JavaPlugin {
     private PluginDescriptionFile pdfFile;
 
     // Maps
-    public HashMap<String, Boolean> isChatting = new HashMap<String, Boolean>();
-    public HashMap<String, Boolean> isAFK = new HashMap<String, Boolean>();
+    public HashMap<UUID, Boolean> isChatting = new HashMap<>();
+    public HashMap<UUID, Boolean> isAFK = new HashMap<>();
 
-    public HashMap<String, Location> AFKLoc = new HashMap<String, Location>();
+    public HashMap<UUID, Location> AFKLoc = new HashMap<>();
 
-    public HashMap<String, Long> lastMove = new HashMap<String, Long>();
+    public HashMap<UUID, Long> lastMove = new HashMap<>();
 
 
     public void onEnable() {
@@ -72,9 +73,9 @@ public class MAdvanced extends JavaPlugin {
             setupCommands();
 
             for (Player players : getServer().getOnlinePlayers()) {
-                isChatting.put(players.getName(), false);
-                isAFK.put(players.getName(), false);
-                lastMove.put(players.getName(), new Date().getTime());
+                isChatting.put(players.getUniqueId(), false);
+                isAFK.put(players.getUniqueId(), false);
+                lastMove.put(players.getUniqueId(), new Date().getTime());
             }
 
             // Stop the Timer
@@ -127,19 +128,19 @@ public class MAdvanced extends JavaPlugin {
                 }
 
                 for (Player player : getServer().getOnlinePlayers()) {
-                    if (isAFK.get(player.getName()) == null) {
-                        isAFK.put(player.getName(), false);
+                    if (isAFK.get(player.getUniqueId()) == null) {
+                        isAFK.put(player.getUniqueId(), false);
                     }
 
-                    if (isAFK.get(player.getName()) || lastMove.get(player.getName()) == null
+                    if (isAFK.get(player.getUniqueId()) || lastMove.get(player.getUniqueId()) == null
                             || API.checkPermissions(player.getName(), player.getWorld().getName(), "mchat.bypass.afk")) {
                         continue;
                     }
 
-                    if (new Date().getTime() - (ConfigType.OPTION_AFK_TIMER.getInteger() * 1000) > lastMove.get(player.getName())) {
+                    if (new Date().getTime() - (ConfigType.OPTION_AFK_TIMER.getInteger() * 1000) > lastMove.get(player.getUniqueId())) {
                         getServer().dispatchCommand(getServer().getConsoleSender(), "mchatafkother " + player.getName() + " " + LocaleType.MESSAGE_AFK_DEFAULT.getVal());
                     } else {
-                        isAFK.put(player.getName(), false);
+                        isAFK.put(player.getUniqueId(), false);
                     }
                 }
             }
@@ -156,11 +157,11 @@ public class MAdvanced extends JavaPlugin {
                         continue;
                     }
 
-                    if (!isAFK.get(player.getName())) {
+                    if (!isAFK.get(player.getUniqueId())) {
                         continue;
                     }
 
-                    if (new Date().getTime() - (ConfigType.OPTION_AFK_KICK_TIMER.getInteger() * 1000) > lastMove.get(player.getName())) {
+                    if (new Date().getTime() - (ConfigType.OPTION_AFK_KICK_TIMER.getInteger() * 1000) > lastMove.get(player.getUniqueId())) {
                         player.kickPlayer(LocaleType.MESSAGE_AFK_DEFAULT.getVal());
                     }
                 }

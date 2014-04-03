@@ -14,6 +14,7 @@ import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.event.player.PlayerMoveEvent;
 
 import java.util.Date;
+import java.util.UUID;
 
 public class PlayerListener implements Listener {
     MAdvanced plugin;
@@ -25,9 +26,9 @@ public class PlayerListener implements Listener {
     @EventHandler
     public void onPlayerCommandPreprocess(PlayerCommandPreprocessEvent event) {
         Player player = event.getPlayer();
-        String pName = player.getName();
+        UUID uuid = player.getUniqueId();
 
-        plugin.lastMove.put(pName, new Date().getTime());
+        plugin.lastMove.put(uuid, new Date().getTime());
 
         for (String aliases : plugin.getCommand("mchatafk").getAliases()) {
             if (event.getMessage().contains("/" + aliases) ||
@@ -36,12 +37,12 @@ public class PlayerListener implements Listener {
             }
         }
 
-        if (plugin.isAFK.get(pName) == null) {
+        if (plugin.isAFK.get(uuid) == null) {
             return;
         }
 
-        if (plugin.isAFK.get(pName)) {
-            plugin.getServer().dispatchCommand(plugin.getServer().getConsoleSender(), "mchatafkother " + pName);
+        if (plugin.isAFK.get(uuid)) {
+            plugin.getServer().dispatchCommand(plugin.getServer().getConsoleSender(), "mchatafkother " + uuid);
         }
     }
 
@@ -49,9 +50,9 @@ public class PlayerListener implements Listener {
     public void onPlayerJoin(PlayerJoinEvent event) {
         Player player = event.getPlayer();
 
-        plugin.isChatting.put(player.getName(), false);
-        plugin.isAFK.put(player.getName(), false);
-        plugin.lastMove.put(player.getName(), new Date().getTime());
+        plugin.isChatting.put(player.getUniqueId(), false);
+        plugin.isAFK.put(player.getUniqueId(), false);
+        plugin.lastMove.put(player.getUniqueId(), new Date().getTime());
     }
 
     @EventHandler
@@ -81,16 +82,16 @@ public class PlayerListener implements Listener {
 
         Player player = event.getPlayer();
 
-        plugin.lastMove.put(player.getName(), new Date().getTime());
+        plugin.lastMove.put(player.getUniqueId(), new Date().getTime());
 
-        if (plugin.isAFK.get(player.getName()) == null) {
+        if (plugin.isAFK.get(player.getUniqueId()) == null) {
             return;
         }
 
-        if (plugin.isAFK.get(player.getName())) {
+        if (plugin.isAFK.get(player.getUniqueId())) {
             if (ConfigType.OPTION_HC_AFK.getBoolean()) {
-                if (plugin.AFKLoc.get(player.getName()) != null) {
-                    player.teleport(plugin.AFKLoc.get(player.getName()));
+                if (plugin.AFKLoc.get(player.getUniqueId()) != null) {
+                    player.teleport(plugin.AFKLoc.get(player.getUniqueId()));
                 }
 
                 MessageUtil.sendMessage(player, LocaleType.MESSAGE_PLAYER_STILL_AFK.getVal());

@@ -8,6 +8,7 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.player.AsyncPlayerChatEvent;
 
 import java.util.Date;
+import java.util.UUID;
 
 public class ChatListener implements Listener {
     private MAdvanced plugin;
@@ -23,7 +24,7 @@ public class ChatListener implements Listener {
         }
 
         Player player = event.getPlayer();
-        String pName = player.getName();
+        UUID uuid = player.getUniqueId();
 
         String msg = event.getMessage();
 
@@ -31,12 +32,12 @@ public class ChatListener implements Listener {
             return;
         }
 
-        if (plugin.isAFK.get(pName) != null) {
-            if (plugin.isAFK.get(pName)) {
+        if (plugin.isAFK.get(uuid) != null) {
+            if (plugin.isAFK.get(uuid)) {
                 player.performCommand("mchatafk");
             }
         }
 
-        plugin.lastMove.put(pName, new Date().getTime());
+        plugin.lastMove.put(uuid, new Date().getTime());
     }
 }

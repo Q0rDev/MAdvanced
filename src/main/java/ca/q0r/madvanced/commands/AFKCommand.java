@@ -9,6 +9,8 @@ import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
+import java.util.UUID;
+
 public class AFKCommand implements CommandExecutor {
     private MAdvanced plugin;
 
@@ -41,7 +43,7 @@ public class AFKCommand implements CommandExecutor {
 
         Player player = (Player) sender;
 
-        if (isAfk(player.getName())) {
+        if (isAfk(player.getUniqueId())) {
             plugin.getServer().dispatchCommand(plugin.getServer().getConsoleSender(), "mchatafkother " + player.getName());
             return true;
         }
@@ -50,7 +52,7 @@ public class AFKCommand implements CommandExecutor {
         return true;
     }
 
-    Boolean isAfk(String player) {
-        return plugin.isAFK.get(player) != null && plugin.isAFK.get(player);
+    Boolean isAfk(UUID uuid) {
+        return plugin.isAFK.get(uuid) != null && plugin.isAFK.get(uuid);
     }
 }

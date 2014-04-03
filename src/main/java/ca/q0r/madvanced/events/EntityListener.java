@@ -30,11 +30,11 @@ public class EntityListener implements Listener {
             if (attacker instanceof Player) {
                 Player player = (Player) attacker;
 
-                if (plugin.isAFK.get(player.getName()) == null) {
+                if (plugin.isAFK.get(player.getUniqueId()) == null) {
                     return;
                 }
 
-                if (plugin.isAFK.get(player.getName()) && ConfigType.OPTION_HC_AFK.getBoolean()) {
+                if (plugin.isAFK.get(player.getUniqueId()) && ConfigType.OPTION_HC_AFK.getBoolean()) {
                     damaged.setLastDamageCause(null);
                     event.setCancelled(true);
                 }
@@ -44,8 +44,8 @@ public class EntityListener implements Listener {
         if (event.getEntity() instanceof Player) {
             Player player = (Player) event.getEntity();
 
-            if (plugin.isAFK.get(player.getName()) != null) {
-                if (plugin.isAFK.get(player.getName())) {
+            if (plugin.isAFK.get(player.getUniqueId()) != null) {
+                if (plugin.isAFK.get(player.getUniqueId())) {
                     event.setCancelled(true);
                 }
             }

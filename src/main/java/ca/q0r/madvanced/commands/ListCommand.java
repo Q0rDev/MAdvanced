@@ -32,14 +32,14 @@ public class ListCommand implements CommandExecutor {
             return true;
         }
 
-        TreeMap<String, String> rMap = new TreeMap<String, String>();
+        TreeMap<String, String> rMap = new TreeMap<>();
 
         rMap.put("max", String.valueOf(plugin.getServer().getMaxPlayers()));
         rMap.put("players", String.valueOf(plugin.getServer().getOnlinePlayers().length));
 
         sender.sendMessage(MessageUtil.addColour(API.replace(LocaleType.MESSAGE_LIST_HEADER.getVal(), rMap, IndicatorType.LOCALE_VAR)));
 
-        HashMap<String, Integer> cLMap = new HashMap<String, Integer>();
+        HashMap<String, Integer> cLMap = new HashMap<>();
 
         String msg = "";
         String line = "";
@@ -83,7 +83,7 @@ public class ListCommand implements CommandExecutor {
                 continue;
             }
 
-            if (plugin.isAFK.get(players.getName()) != null && plugin.isAFK.get(players.getName())) {
+            if (plugin.isAFK.get(players.getUniqueId()) != null && plugin.isAFK.get(players.getUniqueId())) {
                 if (msg.contains(iVar + ": &f")) {
                     msg = msg.replace(iVar + ": &f", iVar + ": &f&4[" + LocaleType.MESSAGE_AFK_AFK.getVal() + "]" + mName + "&f, &f");
                 } else {

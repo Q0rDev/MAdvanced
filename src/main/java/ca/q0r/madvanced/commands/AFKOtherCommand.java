@@ -34,15 +34,12 @@ public class AFKOtherCommand implements CommandExecutor {
             return true;
         }
 
-        Boolean isAfk = plugin.isAFK.get(afkTarget.getName()) != null &&
-                plugin.isAFK.get(afkTarget.getName());
+        Boolean isAfk = plugin.isAFK.get(afkTarget.getUniqueId()) != null &&
+                plugin.isAFK.get(afkTarget.getUniqueId());
 
         String notification = LocaleType.MESSAGE_PLAYER_NOT_AFK.getVal();
 
         String message = "";
-
-        String title = Parser.parsePlayerName(afkTarget.getName(), afkTarget.getWorld().getName());
-
 
         if (!isAfk) {
             if (args.length > 1) {
@@ -58,7 +55,7 @@ public class AFKOtherCommand implements CommandExecutor {
             notification = LocaleType.MESSAGE_PLAYER_AFK.getVal();
         }
 
-        TreeMap<String, String> rMap = new TreeMap<String, String>();
+        TreeMap<String, String> rMap = new TreeMap<>();
 
         rMap.put("player", Parser.parsePlayerName(afkTarget.getName(), afkTarget.getWorld().getName()));
         rMap.put("reason", message);
@@ -67,12 +64,12 @@ public class AFKOtherCommand implements CommandExecutor {
         plugin.getServer().broadcastMessage(API.replace(notification, rMap, IndicatorType.LOCALE_VAR));
 
         afkTarget.setSleepingIgnored(!isAfk);
-        plugin.isAFK.put(afkTarget.getName(), !isAfk);
+        plugin.isAFK.put(afkTarget.getUniqueId(), !isAfk);
 
         String pLName = Parser.parseTabbedList(afkTarget.getName(), afkTarget.getWorld().getName());
 
         if (!isAfk) {
-            plugin.AFKLoc.put(afkTarget.getName(), afkTarget.getLocation());
+            plugin.AFKLoc.put(afkTarget.getUniqueId(), afkTarget.getLocation());
 
             pLName = MessageUtil.addColour("<gold>[" + LocaleType.MESSAGE_AFK_AFK.getVal() + "] ") + pLName;
         }
