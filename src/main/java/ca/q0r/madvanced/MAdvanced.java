@@ -133,12 +133,12 @@ public class MAdvanced extends JavaPlugin {
                     }
 
                     if (isAFK.get(player.getUniqueId()) || lastMove.get(player.getUniqueId()) == null
-                            || API.checkPermissions(player.getName(), player.getWorld().getName(), "mchat.bypass.afk")) {
+                            || API.checkPermissions(player.getUniqueId(), player.getWorld().getName(), "mchat.bypass.afk")) {
                         continue;
                     }
 
                     if (new Date().getTime() - (ConfigType.OPTION_AFK_TIMER.getInteger() * 1000) > lastMove.get(player.getUniqueId())) {
-                        getServer().dispatchCommand(getServer().getConsoleSender(), "mchatafkother " + player.getName() + " " + LocaleType.MESSAGE_AFK_DEFAULT.getVal());
+                        getServer().dispatchCommand(getServer().getConsoleSender(), "mchatafkother " + player.getUniqueId() + " " + LocaleType.MESSAGE_AFK_DEFAULT.getVal());
                     } else {
                         isAFK.put(player.getUniqueId(), false);
                     }
@@ -153,7 +153,7 @@ public class MAdvanced extends JavaPlugin {
                 }
 
                 for (Player player : getServer().getOnlinePlayers()) {
-                    if (API.checkPermissions(player.getName(), player.getWorld().getName(), "mchat.bypass.afkkick")) {
+                    if (API.checkPermissions(player.getUniqueId(), player.getWorld().getName(), "mchat.bypass.afkkick")) {
                         continue;
                     }
 

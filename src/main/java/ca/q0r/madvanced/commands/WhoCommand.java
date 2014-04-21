@@ -24,8 +24,10 @@ public class WhoCommand implements CommandExecutor {
         }
 
         if (args.length > 0) {
-            if (CommandUtil.isOnlineForCommand(sender, args[0])) {
-                formatWho(sender, plugin.getServer().getPlayer(args[0]));
+            Player recipient = API.getPlayer(args[0]);
+
+            if (CommandUtil.isOnlineForCommand(sender, recipient)) {
+                formatWho(sender, recipient);
             }
 
             return true;
@@ -35,7 +37,7 @@ public class WhoCommand implements CommandExecutor {
     }
 
     void formatWho(CommandSender sender, Player recipient) {
-        String recipientName = Parser.parsePlayerName(recipient.getName(), recipient.getWorld().getName());
+        String recipientName = Parser.parsePlayerName(recipient.getUniqueId(), recipient.getWorld().getName());
         Integer locX = (int) recipient.getLocation().getX();
         Integer locY = (int) recipient.getLocation().getY();
         Integer locZ = (int) recipient.getLocation().getZ();

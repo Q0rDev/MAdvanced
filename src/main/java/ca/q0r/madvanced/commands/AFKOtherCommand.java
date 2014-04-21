@@ -28,7 +28,7 @@ public class AFKOtherCommand implements CommandExecutor {
             return true;
         }
 
-        Player afkTarget = plugin.getServer().getPlayer(args[0]);
+        Player afkTarget = API.getPlayer(args[0]);
 
         if (!CommandUtil.isOnlineForCommand(sender, afkTarget)) {
             return true;
@@ -57,7 +57,7 @@ public class AFKOtherCommand implements CommandExecutor {
 
         TreeMap<String, String> rMap = new TreeMap<>();
 
-        rMap.put("player", Parser.parsePlayerName(afkTarget.getName(), afkTarget.getWorld().getName()));
+        rMap.put("player", Parser.parsePlayerName(afkTarget.getUniqueId(), afkTarget.getWorld().getName()));
         rMap.put("reason", message);
         rMap.put("r", message);
 
@@ -66,7 +66,7 @@ public class AFKOtherCommand implements CommandExecutor {
         afkTarget.setSleepingIgnored(!isAfk);
         plugin.isAFK.put(afkTarget.getUniqueId(), !isAfk);
 
-        String pLName = Parser.parseTabbedList(afkTarget.getName(), afkTarget.getWorld().getName());
+        String pLName = Parser.parseTabbedList(afkTarget.getUniqueId(), afkTarget.getWorld().getName());
 
         if (!isAfk) {
             plugin.AFKLoc.put(afkTarget.getUniqueId(), afkTarget.getLocation());

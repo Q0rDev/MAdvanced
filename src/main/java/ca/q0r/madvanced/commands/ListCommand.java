@@ -54,8 +54,8 @@ public class ListCommand implements CommandExecutor {
                 }
             }
 
-            String iVar = Reader.getInfo(players.getName(), InfoType.USER, players.getWorld().getName(), ConfigType.OPTION_LIST_VAR.getString());
-            String mName = Parser.parseListCmd(players.getName(), players.getWorld().getName());
+            String iVar = Reader.getInfo(players.getUniqueId(), InfoType.USER, players.getWorld().getName(), ConfigType.OPTION_LIST_VAR.getString());
+            String mName = Parser.parseListCmd(players.getUniqueId(), players.getWorld().getName());
 
             Boolean collapsed = false;
 
