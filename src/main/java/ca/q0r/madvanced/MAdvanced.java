@@ -133,7 +133,7 @@ public class MAdvanced extends JavaPlugin {
                     }
 
                     if (isAFK.get(player.getUniqueId()) || lastMove.get(player.getUniqueId()) == null
-                            || API.checkPermissions(player.getUniqueId(), player.getWorld().getName(), "mchat.bypass.afk")) {
+                            || API.checkPermissions(player.getUniqueId(), "mchat.bypass.afk")) {
                         continue;
                     }
 
@@ -153,7 +153,7 @@ public class MAdvanced extends JavaPlugin {
                 }
 
                 for (Player player : getServer().getOnlinePlayers()) {
-                    if (API.checkPermissions(player.getUniqueId(), player.getWorld().getName(), "mchat.bypass.afkkick")) {
+                    if (API.checkPermissions(player.getUniqueId(), "mchat.bypass.afkkick")) {
                         continue;
                     }
 
