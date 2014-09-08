@@ -19,12 +19,12 @@ public class ConfigYml extends Yml {
     public ConfigYml() {
         super(new File("plugins/MAdvanced/config.yml"), "MAdvanced Config");
 
-        whoAliases = new ArrayList<>();
-        listAliases = new ArrayList<>();
-        afkAliases = new ArrayList<>();
-        afkOtherAliases = new ArrayList<>();
+        whoAliases = new ArrayList<String>();
+        listAliases = new ArrayList<String>();
+        afkAliases = new ArrayList<String>();
+        afkOtherAliases = new ArrayList<String>();
 
-        aliasMap = new HashMap<>();
+        aliasMap = new HashMap<String, List<String>>();
 
         loadDefaults();
     }

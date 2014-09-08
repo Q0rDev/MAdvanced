@@ -55,7 +55,7 @@ public class AFKOtherCommand implements CommandExecutor {
             notification = LocaleType.MESSAGE_PLAYER_AFK.getVal();
         }
 
-        TreeMap<String, String> rMap = new TreeMap<>();
+        TreeMap<String, String> rMap = new TreeMap<String, String>();
 
         rMap.put("player", Parser.parsePlayerName(afkTarget.getUniqueId(), afkTarget.getWorld().getName()));
         rMap.put("reason", message);

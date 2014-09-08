@@ -32,14 +32,14 @@ public class ListCommand implements CommandExecutor {
             return true;
         }
 
-        TreeMap<String, String> rMap = new TreeMap<>();
+        TreeMap<String, String> rMap = new TreeMap<String, String>();
 
         rMap.put("max", String.valueOf(plugin.getServer().getMaxPlayers()));
         rMap.put("players", String.valueOf(plugin.getServer().getOnlinePlayers().length));
 
         sender.sendMessage(MessageUtil.addColour(API.replace(LocaleType.MESSAGE_LIST_HEADER.getVal(), rMap, IndicatorType.LOCALE_VAR)));
 
-        HashMap<String, Integer> cLMap = new HashMap<>();
+        HashMap<String, Integer> cLMap = new HashMap<String, Integer>();
 
         String msg = "";
         String line = "";

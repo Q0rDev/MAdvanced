@@ -26,18 +26,14 @@ import java.util.HashMap;
 import java.util.UUID;
 
 public class MAdvanced extends JavaPlugin {
+    // Maps
+    public HashMap<UUID, Boolean> isChatting = new HashMap<UUID, Boolean>();
+    public HashMap<UUID, Boolean> isAFK = new HashMap<UUID, Boolean>();
+    public HashMap<UUID, Location> AFKLoc = new HashMap<UUID, Location>();
+    public HashMap<UUID, Long> lastMove = new HashMap<UUID, Long>();
     // Default Plugin Data
     private PluginManager pm;
     private PluginDescriptionFile pdfFile;
-
-    // Maps
-    public HashMap<UUID, Boolean> isChatting = new HashMap<>();
-    public HashMap<UUID, Boolean> isAFK = new HashMap<>();
-
-    public HashMap<UUID, Location> AFKLoc = new HashMap<>();
-
-    public HashMap<UUID, Long> lastMove = new HashMap<>();
-
 
     public void onEnable() {
         // Initialize Plugin Data
