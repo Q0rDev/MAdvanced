@@ -6,7 +6,7 @@
     <name>MAdvanced</name>
     <artifactId>MAdvanced</artifactId>
     <packaging>jar</packaging>
-    <version>1.7.9-R0.3-SNAPSHOT</version>
+    <version>1.7.9-R0.4-SNAPSHOT</version>
     <url>https://github.com/Q0rDev/MAdvanced</url>
     <description>Advanced MChat functionality</description>
 
